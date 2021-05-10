@@ -9,9 +9,12 @@ import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
-import { HttpClientModule } from '@angular/common/http'
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CreateProductComponent } from './create-product/create-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,14 +23,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     HeaderComponent,
     SearchComponent,
     FooterComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

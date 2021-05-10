@@ -6,7 +6,7 @@
     <div class="container showProductDetails2 border rounded ">
         <div class="row  p-2 ">
             <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
-                <img src="{{'/assets/Image/' + product.Image}}" class="img-fluid details-big-image" alt="" style="width: 60%;" />
+                <img [src]="product.Image" class="img-fluid details-big-image" alt="" style="width: 60%;" />
             </div>
             <div class="col-12 col-md-7">
                 <h1 class="details-Name">{{product.Name}}</h1>
