@@ -10,11 +10,13 @@ import { FooterComponent } from './footer/footer.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
-import { NgxSpinnerModule } from 'ngx-spinner'
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateProductComponent } from './create-product/create-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 @NgModule({

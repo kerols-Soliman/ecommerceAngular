@@ -5,9 +5,9 @@
     <form #productForm="ngForm" novalidate (ngSubmit)="onSubmit(productForm)">
         <div class="form-group">
             <label>Product Name :</label>
-            <input type="text" name="txtName" [class.is-invalid]="name.invalid && name.touched " required #name="ngModel" [(ngModel)]="product.Name"  class="form-control">
-             <small class="text-danger" [class.d-none]="name.untouched || name.valid" >Product Name is required</small>
-        </div>
+            <input type="text" name="txtName" [class.is-invalid]="name.invalid && name.touched " required minlength="4"  #name="ngModel" [(ngModel)]="product.Name"  class="form-control">
+             <small class="text-danger" [class.d-none]="name.untouched || name.valid" >Product Name is required and should be more than 3 letter</small>
+            </div>
         <div class="form-group">
             <label>Product Price :</label>
             <input type="number" name="txtPrice" #price="ngModel" [(ngModel)]="product.Price" [class.is-invalid]="price.invalid && price.touched " required class="form-control">
@@ -15,9 +15,15 @@
 
         </div>
         <div class="form-group">
+            <label>Discount:</label>
+            <input type="number" name="txtDiscount" #Discount="ngModel" [(ngModel)]="product.Discount" [class.is-invalid]="Discount.invalid && Discount.touched " class="form-control">
+            <small class="text-danger" [class.d-none]="Discount.untouched || Discount.valid" >Product Price is required</small>
+
+        </div>
+        <div class="form-group">
             <label>Description :</label>
-            <input type="text" name="txtdesc" #description="ngModel" [class.is-invalid]="description.invalid && description.touched " [(ngModel)]="product.Description" required class="form-control">
-            <small class="text-danger" [class.d-none]="description.untouched || description.valid" >description is required</small>
+            <input type="text" name="txtdesc" #description="ngModel" [class.is-invalid]="description.invalid && description.touched " [(ngModel)]="product.Description" required minlength="10" class="form-control">
+            <small class="text-danger" [class.d-none]="description.untouched || description.valid" >description is required and should be more than 9 letter</small>
 
         </div>
         <div class="form-group">
@@ -27,10 +33,18 @@
 
         </div>
         <div class="form-group">
-            <input #imageInput [(ngModel)]="product.Image"
+            <input #imageInput 
                    type="file"
                    accept="image/*"
                    (change)="handleFileInput($event.target.files)">
+        </div>
+        <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+            <img [src]="product.Image" class="img-fluid " alt="" style="width: 60%;" />
+            <div *ngIf="imgURL" class="ml-3 col-12" style="width: 60%;">
+                <label>New Image :</label>
+                <img [src]="imgURL" class="img-fluid" alt=""/>
+            </div>
+            
         </div>
         <!-- <img [src]="'../../assets/'+product.Image" *ngIf="imageSrc" style="height: 300px; width:500px">  -->
         <div class="form-group">
@@ -45,7 +59,7 @@
                
             </select>
         </div>
-        <input type="submit" class="btn btn-primary" value="Save Product" [disabled]="productForm.form.invalid" >
+        <input type="submit" class="btn btn-primary" value="Save Product" [disabled]="productForm.form.invalid">
 
     </form>
 </div>
