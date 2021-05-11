@@ -8,6 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { CreateProductComponent } from './create-product/create-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     HeaderComponent,
     SearchComponent,
     FooterComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

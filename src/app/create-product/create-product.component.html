@@ -1,0 +1,99 @@
+<div class="container">
+  <h2>Create Product</h2>
+  <form [formGroup]="CreateProductForm">
+
+   
+    <div class="form-group">
+      <label>Product Name</label>
+      <input formControlName="productName" [class.is-invalid]="productName.invalid && productName.touched" type="text"
+        class="form-control" />
+      <div *ngIf=" productName.errors && (productName.invalid && productName.touched)">
+        <small class="text-danger" *ngIf="productName.errors?.required">
+          Product name is required
+        </small>
+        <small class="text-danger" *ngIf="productName.errors.minlength">
+          Product Name Must Be More than 4
+        </small>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Price</label>
+      <input formControlName="productPrice" [class.is-invalid]="productPrice.invalid && productPrice.touched"
+        type="number" class="form-control" />
+      <small class="text-danger" *ngIf="productPrice.invalid && productPrice.touched">Price Is required</small>
+    </div>
+
+    <div class="form-group">
+      <label>Quantity</label>
+      <input formControlName="productQuentity" [class.is-invalid]="productQuentity.invalid && productQuentity.touched"
+        type="number" class="form-control" />
+      <small class="text-danger" *ngIf="productQuentity.invalid && productQuentity.touched">Quantity Is required</small>
+    </div>
+    
+    <div class="form-group">
+      <label>Description</label>
+      <input formControlName="productDescription"
+        [class.is-invalid]="productDescription.invalid && productDescription.touched" type="text"
+        class="form-control" />
+      <div *ngIf=" productDescription.errors && (productDescription.invalid && productDescription.touched)">
+        <small class="text-danger" *ngIf="productDescription.errors?.required">
+          Product Description is required
+        </small>
+        <small class="text-danger" *ngIf="productDescription.errors.minlength">
+          Product Description Must Be More than 10
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Categroy</label>
+      <select class="form-control" formControlName="categroy">
+
+        <option *ngFor="let cat of catgoryies" [ngValue]="cat.Id" >{{cat.Name}}</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+      <label>Discount</label>
+      <input formControlName="productDiscount" type="number" class="form-control" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="file">Upload Image</label>
+      <input type="file"
+             id="file"
+             (change)="handleFileInput($event.target.files)" class="form-control" formControlName = "productImage">
+  </div>
+    
+<!-- <div class="form-group">
+  <label>Image</label>
+  <input class="form-control" type="file" 
+          (change)="onChange($event)" formControlName = "productImage"
+           [class.is-invalid] = "productImage.errors&&(productImage.invalid&&productImage.touched)"/>
+           <small class="text-danger" *ngIf= "productImage.errors&&(productImage.invalid && productImage.touched)">Image Is required</small>
+            <small class="text-success"*ngIf="loading">loading..... </small>          
+   -->
+
+  <!-- <div class="container text-center jumbotron"
+    *ngIf="shortLink">
+    <h2> Visit Here</h2>
+    <a href="{{shortLink}}">{{shortLink}}</a>
+</div>
+  
+<!--Flag variable is used here-->
+<!-- <div class="container" *ngIf="loading">
+    <h3>Loading ...</h3> --> 
+<!-- </div> -->
+
+
+
+  
+    <button type="submit" class="btn add-btn" (click)="addNewProduct()">Add new Product</button>
+  </form>
+
+</div>
