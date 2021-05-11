@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product:IProduct;
   
-  
+  availableQuantity:boolean=true;
   ngOnInit(): void {
     this.spinner.show()
     this.productService.GetById(1).subscribe(data=>{
@@ -24,10 +24,17 @@ export class ProductDetailsComponent implements OnInit {
   }
   Quantity:number=1;
   Increase(){
-    this.Quantity++;
+    if(this.Quantity<=this.product.Quentity){
+      this.Quantity++;
+      this.availableQuantity=true
+    }else{
+      this.availableQuantity=false
+    }
   }
   Decrease(){
-    this.Quantity--;
+    if(this.Quantity>1)
+      this.Quantity--;
+      this.availableQuantity=true
   }
   
 
