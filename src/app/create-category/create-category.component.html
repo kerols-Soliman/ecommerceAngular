@@ -1,1 +1,45 @@
-<p>create-category works!</p>
+
+<form [formGroup]="createCategoryForm">
+    <div class="row">
+        <div class="col-6 bord">
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text"
+                 class="form-control"
+                 placeholder="Category Name"
+                 formControlName="Name" >
+                
+
+                <div *ngIf="Name.invalid && Name.touched">
+                    <small class="text-danger" *ngIf="Name.errors?.required">The Name Is Required</small>
+                    <small class="text-danger" *ngIf="Name.errors?.minlength">The Number Should be More Than 4 Character</small>
+                </div>
+
+                
+            </div>
+            
+            <div class="form-group">
+                <label class="d-block">Image</label>
+                <div class="text-center">
+                    <img [src]="photo" class="img-fluid" style="width: 40%; height: auto;">
+                    <input type="file" class="d-block mt-3" style="margin: auto;" accept="image/*"
+                    formControlName="Image" (change)="handleFileInput($event.target.files)">
+
+                    <div *ngIf="Image.invalid && Image.touched">
+                        <small class="text-danger" *ngIf="Image.errors?.required">The Image Is Required</small>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                
+                <button [disabled]="createCategoryForm.invalid"
+                class="btn  btn-orange" (click)="addCategory()" routerLink="/Category">Add</button>
+            </div>
+            
+        </div>
+
+    </div>
+    
+</form>
