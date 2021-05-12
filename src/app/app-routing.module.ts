@@ -9,8 +9,10 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 const routes: Routes = [
+  {path:"LogIn",component:LogInComponent},
   {path:"Product/edit",component:EditProductComponent},
   {path:"EditCategory/:id",component:EditCategoryComponent},
   {path:'productDetails/:id',component:ProductDetailsComponent},

@@ -20,6 +20,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     CreateProductComponent,
     CreateCategoryComponent,
     ShowCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
