@@ -27,6 +27,7 @@
                     </div>
                     <button class="btn  btn-orange col-1 rounded-right btn-Increase" (click)="Increase()" style="border-radius:0;">+</button>
                 </div>
+                <small *ngIf="!availableQuantity" class="text-danger">Not Avaliable Quantity more</small>
             </div>
 
         </div>

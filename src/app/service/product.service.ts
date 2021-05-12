@@ -26,6 +26,14 @@ export class ProductService {
       }
     ))
   }
+  UpdateProduct(product:IProduct,id:number)
+  {
+    const updateUrl = this.url + "/" + id;
+    return this.http.put<IProduct>(updateUrl,product).pipe(catchError((err)=>
+    {
+      return throwError(err.message || "there is an Error");
+     }));
+  }
 
   getProducts() {
     return this.http.get<IProduct[]>(this.url).pipe(catchError(

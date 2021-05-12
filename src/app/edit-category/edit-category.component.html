@@ -1,0 +1,88 @@
+
+<form #CategoryForm="ngForm" novalidate (ngSubmit)="EditCategory(CategoryForm)" style="margin-bottom: 20px;">
+    <div class="row">
+        <div class="col-6 bord">
+            <h1 style="color: cornflowerblue;">Edit Category</h1>
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text" name="txtName" [class.is-invalid]="name.invalid && name.touched " required minlength="4"  #name="ngModel" [(ngModel)]="category.Name"  class="form-control">
+                <small class="text-danger" [class.d-none]="name.untouched || name.valid" >Category Name is required and should be more than 3 letter</small>
+
+            </div>
+            
+            <div class="form-group">
+                <label class="d-block">Image</label>
+                <div class="text-center">
+                    <input type="file" class="d-block mt-3" style="margin: auto;" accept="image/*"
+                     (change)="handleFileInput($event.target.files)">
+
+                     <div class="col-12 col-md-5 d-flex mt-3" style="flex-direction: row;align-items: center;">
+                         
+                            <img [src]="category.Image" class="img-fluid " alt="" />
+                            <!-- <label>New Image :</label> -->
+                            <img  *ngIf="imgURL" [src]="imgURL" class="img-fluid bord2" alt="" />
+                        
+                        
+                    </div>
+
+                </div>
+            </div> 
+
+            
+            <div>
+                
+               
+                <input type="submit" class="btn btn-orange" value="Save Category" [disabled]="CategoryForm.form.invalid">
+                  
+            </div>
+            
+        </div>
+
+    </div>
+    
+</form>
+
+
+<!-- <form [formGroup]="EditCategoryForm" (ngSubmit)="EditCategory()">
+    <div class="row">
+        <div class="col-6 bord">
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text"
+                 class="form-control"
+                 formControlName="Name">
+                
+                <div *ngIf="Name.invalid && Name.touched">
+                    <small class="text-danger" *ngIf="Name.errors?.required">The Name Is Required</small>
+                    <small class="text-danger" *ngIf="Name.errors?.minlength">The Number Should be More Than 4 Character</small>
+                </div>
+
+                
+            </div>
+            
+            <div class="form-group">
+                <label class="d-block">Image</label>
+                <div class="text-center">
+                     <img [src]="Image" class="img-fluid" style="width: 40%; height: auto;">
+                    <input type="file" class="d-block mt-3" style="margin: auto;" accept="image/*"
+                    formControlName="Image" (change)="handleFileInput($event.target.files)">
+
+                    <div *ngIf="Image.invalid && Image.touched">
+                        <small class="text-danger" *ngIf="Image.errors?.required">The Image Is Required</small>
+                    </div>
+                </div>
+            </div> 
+
+            
+            <div>
+                
+               
+                <input type="submit" class="btn btn-primary" value="Save Edit" >
+                 [disabled]="EditCategoryForm.invalid" 
+            </div>
+            
+        </div>
+
+    </div>
+    
+</form> -->

@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
   }
   onProductClick(prodct : IProduct){
     
-    this.router.navigate(["/product" , prodct.Id])
+    this.router.navigate(["/productDetails" , prodct.Id])
     console.log("pushed")
   }
 
