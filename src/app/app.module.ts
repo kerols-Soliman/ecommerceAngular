@@ -19,7 +19,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
-//import { Regist2Component } from './regist/regist.component';
+import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { HomeComponent } from './home/home.component';
 
@@ -37,9 +37,10 @@ import { HomeComponent } from './home/home.component';
     CreateProductComponent,
     CreateCategoryComponent,
     ShowCategoryComponent,
-   // Regist2Component,
     EditCategoryComponent,
-    HomeComponent
+    HomeComponent,
+    Regist2Component,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
