@@ -20,11 +20,22 @@ export class ProductService {
   }
 
   postProduct(product: IProduct) {
-   return this.http.post<IProduct>(this.url, product).pipe(catchError(
-       (err)=>{
-         return throwError(err.message || " Server Error");
-       }
+    return this.http.post<IProduct>(this.url, product).pipe(catchError(
+      (err) => {
+        return throwError(err.message || " Server Error");
+      }
     ))
+  }
+
+  getProducts() {
+    return this.http.get<IProduct[]>(this.url).pipe(catchError(
+      (err) => {
+
+        return throwError(err.message || " Server Error");
+      }
+
+    ))
+
   }
 
 }

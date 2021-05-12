@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateProductComponent } from './create-product/create-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     FooterComponent,
     ProductDetailsComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
