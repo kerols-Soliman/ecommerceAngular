@@ -1,13 +1,17 @@
-<p>edit-product works!</p>
 
-<div class="container col-5 border p-5 mt-5 mb-5">
-    <h1>Edit Product</h1>
-    <form #productForm="ngForm" novalidate (ngSubmit)="onSubmit(productForm)">
+
+
+    
+    <form #productForm="ngForm" novalidate (ngSubmit)="onSubmit(productForm)" style="margin-bottom: 20px;">
+        <div class="row">
+            
+        <div class="col-6 bord">
+            <h1 style="color: cornflowerblue;">Edit Product</h1>
         <div class="form-group">
             <label>Product Name :</label>
             <input type="text" name="txtName" [class.is-invalid]="name.invalid && name.touched " required minlength="4"  #name="ngModel" [(ngModel)]="product.Name"  class="form-control">
              <small class="text-danger" [class.d-none]="name.untouched || name.valid" >Product Name is required and should be more than 3 letter</small>
-            </div>
+        </div>
         <div class="form-group">
             <label>Product Price :</label>
             <input type="number" name="txtPrice" #price="ngModel" [(ngModel)]="product.Price" [class.is-invalid]="price.invalid && price.touched " required class="form-control">
@@ -33,19 +37,25 @@
 
         </div>
         <div class="form-group">
-            <input #imageInput 
-                   type="file"
-                   accept="image/*"
-                   (change)="handleFileInput($event.target.files)">
-        </div>
-        <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
-            <img [src]="product.Image" class="img-fluid " alt="" style="width: 60%;" />
-            <div *ngIf="imgURL" class="ml-3 col-12" style="width: 60%;">
-                <label>New Image :</label>
-                <img [src]="imgURL" class="img-fluid" alt=""/>
+            <label class="d-block">Image</label>
+            <div class="text-center">
+                <input type="file" class="d-block mt-3" style="margin: auto;" accept="image/*"
+                 (change)="handleFileInput($event.target.files)">
+
+                 <div class="col-12 col-md-5 d-flex mt-3" style="flex-direction: row;align-items: center;">
+                     
+                        <img [src]="product.Image" class="img-fluid " alt="" />
+                        <!-- <label>New Image :</label> -->
+                        <img  *ngIf="imgURL" [src]="imgURL" class="img-fluid bord2" alt="" />
+                    
+                    
+                </div>
+
             </div>
-            
+
+
         </div>
+        
         <!-- <img [src]="'../../assets/'+product.Image" *ngIf="imageSrc" style="height: 300px; width:500px">  -->
         <div class="form-group">
             <label> Category :</label>
@@ -59,7 +69,8 @@
                
             </select>
         </div>
-        <input type="submit" class="btn btn-primary" value="Save Product" [disabled]="productForm.form.invalid">
-
+        <input type="submit" class="btn btn-orange" value="Save Product" [disabled]="productForm.form.invalid">
+      </div>
+        </div>
     </form>
-</div>
+

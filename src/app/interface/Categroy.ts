@@ -1,4 +1,5 @@
 export interface ICategroy{
-    "Id"?:number    
-    "Name" :string    
+    "Id"?:number,
+    "Name" :string,
+    "Image":string  
 }

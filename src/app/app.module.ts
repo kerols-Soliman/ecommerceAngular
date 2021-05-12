@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import { ShowCategoryComponent } from './show-category/show-category.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FooterComponent,
     EditProductComponent,
     ProductDetailsComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CreateCategoryComponent,
+    ShowCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
