@@ -33,6 +33,20 @@ export class CategroyService {
     }))
     console.log("delete serve")
   }
+  GetById(id: number) {
+    
+    return this.http.get<ICategroy>( this.url + "/" + id).pipe(catchError(err => {
+      return throwError(err.message || "There is an error");
+    }))
+  }
+  UpdateCategory(category:ICategroy,id:number)
+  {
+    const updateUrl = this.url + "/" + id;
+    return this.http.put<ICategroy>(updateUrl,category).pipe(catchError((err)=>
+    {
+      return throwError(err.message || "there is an Error");
+     }));
+  }
    
 
   

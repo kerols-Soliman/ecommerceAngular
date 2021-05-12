@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { NgxSpinner, NgxSpinnerService, Spinner } from 'ngx-spinner';
 import { ICategroy } from '../interface/Categroy';
@@ -13,7 +13,10 @@ import { CategroyService } from '../service/categroy.service';
 export class ShowCategoryComponent implements OnInit {
 
   constructor(private categoryService:CategroyService,private route:Router
-    ,private spinner:NgxSpinnerService) { }
+    ,private spinner:NgxSpinnerService) 
+    {
+      
+     }
 
   AllCategory:ICategroy[];
   ngOnInit(): void {
@@ -29,6 +32,11 @@ export class ShowCategoryComponent implements OnInit {
     this.route.navigate(["/Category"]).then(() => {
       window.location.reload();
     });
+  }
+
+  EditCategory(id:number)
+  {
+      this.route.navigate(['EditCategory',id]);
   }
 
 }
