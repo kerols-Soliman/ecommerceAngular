@@ -15,15 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateProductComponent } from './create-product/create-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-import { HomeComponent } from './home/home.component';
-=======
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
+//import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
->>>>>>> df7c22c60411981ce91a08d5a831d4544f30f877
+import { HomeComponent } from './home/home.component';
+
 
 
 @NgModule({
@@ -36,13 +35,11 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     EditProductComponent,
     ProductDetailsComponent,
     CreateProductComponent,
-<<<<<<< HEAD
-    HomeComponent
-=======
     CreateCategoryComponent,
     ShowCategoryComponent,
-    EditCategoryComponent
->>>>>>> df7c22c60411981ce91a08d5a831d4544f30f877
+   // Regist2Component,
+    EditCategoryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -59,3 +56,5 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
