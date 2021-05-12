@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
+import { Regist2Component } from './regist/regist.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ShowCategoryComponent } from './show-category/show-category.component';
     ProductDetailsComponent,
     CreateProductComponent,
     CreateCategoryComponent,
-    ShowCategoryComponent
+    ShowCategoryComponent,
+    Regist2Component
   ],
   imports: [
     BrowserModule,
