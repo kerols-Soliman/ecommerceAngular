@@ -23,6 +23,7 @@ import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -42,7 +43,8 @@ import { HomeComponent } from './home/home.component';
     LogInComponent,
     HomeComponent,
     Regist2Component,
-    EditCategoryComponent
+    EditCategoryComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

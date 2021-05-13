@@ -11,8 +11,10 @@ import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
+  {path:"MyOrders",component:OrderComponent},
   {path:"LogIn",component:LogInComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: "home", component: HomeComponent },
