@@ -1,0 +1,37 @@
+<div class="container">
+  <div *ngFor="let cat of categroyies">
+    <div class="card" [style.margin-bottom]="'50px'">
+      <div class="card-deck ml-0 mr-0">
+        <div [ngStyle]="categroyHeaderStyle">
+          <div class="d-inline-block">
+            <h3 [style.margin]="'5px'">{{cat.Name}}</h3>
+          </div>
+          <div class="d-inline-block float-right m-2"> <a href="#" class="btn-link text-white ">More</a> </div>
+        </div>
+
+        <div *ngFor="let prod of Products">
+          <div *ngIf="FilterProduct(cat , prod)">
+
+            <div [ngClass]="cardClass">
+              <img class="card-img-top" [src]="prod.Image" alt="Card image cap" style="height: 9rem; width: 11rem;">
+              <div class="card-body">
+                <h6 class="card-title mb-0">{{prod.Name}}</h6>
+                <p class="card-text mb-0">{{prod.Price}}</p>
+                <a class="btn show-btn" (click)="onProductClick(prod)">Show Deatils</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="card col-3 border border-white "  >
+  <img class="card-img-top" src="assets/Image/mens-tops-5.jpg" alt="Card image cap" style="height: 10rem;" >
+  <div class="card-body">
+    <h6 class="card-title">Product Name</h6>
+    <p class="card-text">EGP 125</p>
+    <a href="#" class="btn show-btn">Show Deatils</a>
+  </div>
+</div> -->

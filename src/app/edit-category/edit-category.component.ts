@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { apiUrl } from 'src/config';
 import { ICategroy } from '../interface/Categroy';
 import { CategroyService } from '../service/categroy.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
@@ -41,6 +42,7 @@ export class EditCategoryComponent implements OnInit {
     this.CatService.GetById(this.categoryId).subscribe(Data=>
       {  
          this.category=Data;
+         let newurl:string=apiUrl+"/Image/";
          this.oldImage = Data.Image.replace('http://localhost:13149/Image/', '');
         console.log(Data.Image);  
         console.log(this.oldImage);        

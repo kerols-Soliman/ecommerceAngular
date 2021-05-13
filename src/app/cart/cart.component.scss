@@ -4,9 +4,32 @@
 .price{
     color:#5965b1;
 }
-input{
-    padding: 1%;
-    width: 4rem;
-    font-size: 1.1rem;
-    text-align: center;
+// input{
+//     padding: 1%;
+//     width: 4rem;
+//     font-size: 1.1rem;
+//     text-align: center;
+// }
+.input-number{
+    background-color: white !important;
+    border-top: 1px solid #e32e00  !important;
+    border-bottom: 1px solid #e32e00  !important;
+
+}
+.title{
+    color: #222e6a;
+}
+.totalPrice{
+    color:#5965b1
+}
+.btn-orange {
+    background-color: rgb(227, 46, 0) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-orange:hover {
+    color: rgb(227, 46, 0) !important;
+    background-color: white !important;
+    border: 1px solid rgb(227, 46, 0) !important;
 }

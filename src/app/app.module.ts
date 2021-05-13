@@ -22,6 +22,9 @@ import { ShowCategoryComponent } from './show-category/show-category.component';
 import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { CartComponent } from './cart/cart.component';
     CreateProductComponent,
     CreateCategoryComponent,
     ShowCategoryComponent,
+    EditCategoryComponent,
+    LogInComponent,
+    HomeComponent,
     Regist2Component,
     EditCategoryComponent,
     CartComponent
@@ -55,3 +61,5 @@ import { CartComponent } from './cart/cart.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

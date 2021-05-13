@@ -51,15 +51,15 @@
 
                 <!-- @if (!User.Identity.IsAuthenticated){ -->
                     <li class="nav-item mr-1 p-1 nav-login">
-                        <a class="nav-link border rounded" routerLink="/">Login</a>
+                        <a class="nav-link border rounded" *ngIf="!IsLoggin" routerLink="LogIn">Login</a>
                     </li>
                     <li class="nav-item mr-1 p-1 nav-regist">
-                        <a class="nav-link border rounded" routerLink="/regist">Regist</a>
+                        <a class="nav-link border rounded"  *ngIf="!IsLoggin" routerLink="/regist">Regist</a>
                     </li>
                 <!-- } -->
                 <!-- @if (User.Identity.IsAuthenticated){ -->
                     <li class="nav-item mr-1 p-1 nav-Sign-Out">
-                        <a class="nav-link border rounded btn-sign-out" href="/Account/Logout">Sign Out</a>
+                        <a class="nav-link border rounded btn-sign-out"  *ngIf="IsLoggin"  (click)="LogOut()">Sign Out</a>
                     </li>
                 <!-- } -->
 
