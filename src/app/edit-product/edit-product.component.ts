@@ -59,9 +59,9 @@ export class EditProductComponent implements OnInit {
       console.log(this.product);
 
       this.route.navigate(['/edit'])
-      .then(() => {
-        window.location.reload();
-      });
+      // .then(() => {
+      //   window.location.reload();
+      // });
 
   }
 

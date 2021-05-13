@@ -85,14 +85,14 @@ export class EditCategoryComponent implements OnInit {
     
    this.CatService.UpdateCategory(this.category,this.categoryId).subscribe(Data=>
       {
-       console.log(Data);
+       console.log("data after subscribe"+Data);
       });
-      console.log(this.category);
-
-      this.route.navigate(['Category'])
-      .then(() => {
-        window.location.reload();
-      });
+      // console.log(this.category);
+      this.route.navigate(['/Category'])
+      // .then(() => {
+      //   window.location.reload();
+      // });
+      
 
   }
   sendImage(){

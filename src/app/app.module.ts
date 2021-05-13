@@ -19,8 +19,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
+import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { LogInComponent } from './log-in/log-in.component';
     CreateCategoryComponent,
     ShowCategoryComponent,
     EditCategoryComponent,
-    LogInComponent
+    LogInComponent,
+    HomeComponent,
+    Regist2Component,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -53,3 +59,5 @@ import { LogInComponent } from './log-in/log-in.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

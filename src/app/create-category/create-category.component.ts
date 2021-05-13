@@ -49,7 +49,6 @@ export class CreateCategoryComponent implements OnInit {
       "Image":this.FileToUpload.name
     }
     
-    console.log(this.newCategory)
     this.fileUpload.postFile(this.FileToUpload).subscribe(data=>console.log(data))
     
     this.categoryService.postCategory(this.newCategory).subscribe(data=>console.log(data))
