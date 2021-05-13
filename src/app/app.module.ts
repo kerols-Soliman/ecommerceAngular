@@ -21,6 +21,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     CreateCategoryComponent,
     ShowCategoryComponent,
     Regist2Component,
-    EditCategoryComponent
+    EditCategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
