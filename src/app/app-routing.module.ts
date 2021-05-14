@@ -13,9 +13,10 @@ import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
 import { OrderComponent } from './order/order.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 const routes: Routes = [
-  {path:"MyOrders",component:OrderComponent},
+  {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
   {path:"LogIn",component:LogInComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: "home", component: HomeComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path:"EditCategory/:id",component:EditCategoryComponent},
   {path:'productDetails/:id',component:ProductDetailsComponent},
   {path:'Category',component:ShowCategoryComponent},
-  {path:'createCategory',component:CreateCategoryComponent},
+  {path:'createCategory',component:CreateCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'createProduct',component:CreateProductComponent},
   {path:'regist',component:Regist2Component},
   {path:'cart',component:CartComponent},

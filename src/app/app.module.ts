@@ -25,6 +25,7 @@ import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 
 
@@ -59,7 +60,7 @@ import { OrderComponent } from './order/order.component';
     FormsModule,
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

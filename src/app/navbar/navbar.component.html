@@ -30,11 +30,10 @@
                             Dropdown
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown ">
-                            <a class="dropdown-item" routerLink="/createCategory" style="color: rgba(0,0,0,.5) !important">Create Category</a>
+                            <a class="dropdown-item" routerLink="/createCategory" style="color: rgba(0,0,0,.5) !important" *ngIf="checkAdmin(['Admin'])">Create Category</a>
                             <a class="dropdown-item" routerLink="/Category" style="color: rgba(0,0,0,.5) !important">Category</a>
                             <a class="dropdown-item" routerLink="/MyOrders" style="color: rgba(0,0,0,.5) !important">MyOrders</a>
                             <div class="dropdown-divider"></div>
-
                             <a class="dropdown-item" routerLink="/createProduct" style="color: rgba(0,0,0,.5) !important">Create Product</a>
                             <a class="dropdown-item" href="/Product/Index" style="color: rgba(0,0,0,.5) !important">Product</a>
                         </div>

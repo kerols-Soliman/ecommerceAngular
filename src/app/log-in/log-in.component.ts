@@ -47,6 +47,7 @@ export class LogInComponent implements OnInit {
     {
       console.log(data);
       localStorage.setItem('userToken',data['access_token']);
+      localStorage.setItem('userRoles',data['roles']);
       this.router.navigate(['/home']);
       console.log("Done Req");
     },(err:HttpErrorResponse)=>
