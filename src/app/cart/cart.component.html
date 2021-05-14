@@ -37,6 +37,6 @@
             <h3 class="totalPrice">Total :</h3>
             <h4 class="ml-4">{{totalPrice}} EGP</h4>
         </div>
-        <button class="btn btn-orange mt-3 w-100 p-2" [disabled]="products.length==0">Make Order</button>
+        <button class="btn btn-orange mt-3 w-100 p-2" (click)="MakeOrder()" [disabled]="products.length==0">Make Order</button>
     </div>
 </div>

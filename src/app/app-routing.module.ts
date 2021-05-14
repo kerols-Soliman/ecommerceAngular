@@ -13,11 +13,13 @@ import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
+  { path:'', redirectTo: '/home', pathMatch: 'full' },
+  { path:"home", component: HomeComponent },
+  {path:"MyOrders",component:OrderComponent},
   {path:"LogIn",component:LogInComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: "home", component: HomeComponent },
   {path:"Product/edit",component:EditProductComponent},
   {path:"EditCategory/:id",component:EditCategoryComponent},
   {path:'productDetails/:id',component:ProductDetailsComponent},

@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from '../interface/Product';
 import { CartService } from '../service/cart.service';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +12,7 @@ import { CartService } from '../service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:CartService,private route:Router) { }
+  constructor(private cartService:CartService,private route:Router,private orderService:OrderService) { }
 
   products:IProduct[];
   totalPrice:number=0;
@@ -50,6 +52,20 @@ export class CartComponent implements OnInit {
       input.value--;
       this.changeQty(product,input.value) 
     }
+  }
+
+  MakeOrder()
+  {
+    this.orderService.PostOrder().subscribe((data)=>
+      { 
+        this.route.navigate(['/MyOrders']);
+      },(err:HttpErrorResponse)=>
+      {
+        console.log("error Req");
+      }
+    
+    )
+     
   }
 
 }
