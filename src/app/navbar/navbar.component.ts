@@ -12,8 +12,14 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router:Router,private accountService:AccountService,private userService:UserService) { }
   IsLoggin:Boolean=false;
+  photo;
+  userName
   ngOnInit(): void {
     this.IsLogged()
+    this.accountService.GetUser().subscribe(data=>{
+      this.photo=data.Image
+      this.userName=data.Name
+    })
   }
   IsLogged(){
     this.IsLoggin=this.accountService.isAuthenticated();
@@ -31,4 +37,5 @@ export class NavbarComponent implements OnInit {
     console.log(this.userService.RoleMatch(['Admin']));
     return this.userService.RoleMatch(role);
   }
+
 }

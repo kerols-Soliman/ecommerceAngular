@@ -12,14 +12,16 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { AuthGuard } from './Auth/auth.guard';
 
 const routes: Routes = [
   {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
+  { path:'', redirectTo: '/home', pathMatch: 'full' },
+  { path:"home", component: HomeComponent },
+  {path:"MyOrders",component:OrderComponent},
   {path:"LogIn",component:LogInComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: "home", component: HomeComponent },
   {path:"Product/edit",component:EditProductComponent},
   {path:"EditCategory/:id",component:EditCategoryComponent},
   {path:'productDetails/:id',component:ProductDetailsComponent},
@@ -28,6 +30,7 @@ const routes: Routes = [
   {path:'createProduct',component:CreateProductComponent},
   {path:'regist',component:Regist2Component},
   {path:'cart',component:CartComponent},
+  {path:'editProfile',component:ProfileEditComponent}
 ];
 
 @NgModule({
