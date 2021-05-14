@@ -14,3 +14,32 @@
 //     height: 104px;
 //     width : 104px;
 //   }
+h2{
+    color: rgb(227, 46, 0);
+}
+.bord{
+    margin: auto !important;
+    border-radius: 2rem;
+    box-shadow: 3px 10px rgb(227, 46, 0,.7);
+    padding: 3%;
+    border: 1px solid  rgb(227, 46, 0,.7);
+}
+label{
+    color:  rgb(227, 46, 0);
+}
+.btn-orange {
+    background-color: rgb(227, 46, 0) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-orange:hover {
+    color: rgb(227, 46, 0) !important;
+    background-color: white !important;
+    border: 1px solid rgb(227, 46, 0) !important;
+}
+.img-product{
+    cursor: pointer;
+    width: 40%;
+    height: auto;
+}

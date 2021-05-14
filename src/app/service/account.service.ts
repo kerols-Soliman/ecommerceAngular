@@ -15,9 +15,23 @@ export class AccountService {
   constructor(private http:HttpClient) { }
    url=apiUrl+"api/Accounts";
 
+  GetUser(){
+    return this.http.get<IUser>(this.url,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
+    )}).pipe(catchError(err=>
+      {return throwError(err.message||"an error occur")})
+    );
+  }
+ 
+  Edit(user:IUser){
+    return this.http.put<IUser>(this.url,user,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
+    )}).pipe(catchError(
+      err=>{return throwError(err.message || "An Error Occure")}))
+  }
+
   postUser(user:IUser){
-    console.log("in serve");
-   return this.http.post<IUser>(this.url,user).pipe(catchError(
+    return this.http.post<IUser>(this.url,user).pipe(catchError(
       err=>{return throwError(err.message || "An Error Occure")}))
   }
 

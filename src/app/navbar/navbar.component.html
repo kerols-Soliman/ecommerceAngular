@@ -41,25 +41,35 @@
 
                 <!-- } -->
                 <!-- @if (User.Identity.IsAuthenticated){ -->
-                    <li class="nav-item mr-1 p-1 btn-cart">
+                    <li class="nav-item mr-1 p-1 btn-cart"  *ngIf="IsLoggin">
                         <a class="nav-link" href="/Favorite/My_FaviorateProduct"><i class="fas fa-heart"></i></a>
                     </li>
-                    <li class="nav-item mr-1 p-1 btn-cart">
+                    <li class="nav-item mr-1 p-1 btn-cart"  *ngIf="IsLoggin">
                         <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
                     </li>
                 <!-- } -->
 
                 <!-- @if (!User.Identity.IsAuthenticated){ -->
-                    <li class="nav-item mr-1 p-1 nav-login">
-                        <a class="nav-link border rounded" *ngIf="!IsLoggin" routerLink="LogIn">Login</a>
+                    <li class="nav-item mr-1 p-1 nav-login" *ngIf="!IsLoggin">
+                        <a class="nav-link border rounded" routerLink="LogIn">Login</a>
                     </li>
-                    <li class="nav-item mr-1 p-1 nav-regist">
-                        <a class="nav-link border rounded"  *ngIf="!IsLoggin" routerLink="/regist">Regist</a>
+                    <li class="nav-item mr-1 p-1 nav-regist" *ngIf="!IsLoggin">
+                        <a class="nav-link border rounded"  routerLink="/regist">Regist</a>
                     </li>
                 <!-- } -->
                 <!-- @if (User.Identity.IsAuthenticated){ -->
-                    <li class="nav-item mr-1 p-1 nav-Sign-Out">
-                        <a class="nav-link border rounded btn-sign-out"  *ngIf="IsLoggin"  (click)="LogOut()">Sign Out</a>
+                    
+
+                    <li class="nav-item dropdown mr-1 p-1 li-profile"  *ngIf="IsLoggin">
+                        <a class="nav-link dropdown-togle p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img [src]="photo" class="img-fluid img-icon mr-1" alt="">{{userName}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown ">
+                            <a class="dropdown-item" routerLink="/editProfile" style="color: rgba(0,0,0,.5) !important;">Profile</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"   (click)="LogOut()" style="color: rgba(0,0,0,.5) !important;">Sign Out</a>
+                        </div>
                     </li>
                 <!-- } -->
 

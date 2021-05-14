@@ -12,6 +12,7 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 const routes: Routes = [
   {path:"LogIn",component:LogInComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'createProduct',component:CreateProductComponent},
   {path:'regist',component:Regist2Component},
   {path:'cart',component:CartComponent},
+  {path:'editProfile',component:ProfileEditComponent}
 ];
 
 @NgModule({

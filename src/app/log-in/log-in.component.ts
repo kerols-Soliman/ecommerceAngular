@@ -16,8 +16,7 @@ export class LogInComponent implements OnInit {
 
   user:ILogUser;
   IslogInError:boolean=false;
-  constructor(private fb:FormBuilder,private acountService:AccountService
-    ,private router:Router) { }
+  constructor(private fb:FormBuilder,private acountService:AccountService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -55,8 +54,6 @@ export class LogInComponent implements OnInit {
       this.IslogInError=true;
     }
     );
-    
-    // this.nav.IsLoggin=false;
   }
 
 }

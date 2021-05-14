@@ -24,6 +24,7 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 
 
@@ -44,7 +45,8 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
     Regist2Component,
     EditCategoryComponent,
-    CartComponent
+    CartComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
