@@ -27,7 +27,14 @@ export class AccountService {
     var data="username="+user.username+"&password="+user.password+"&grant_type=password"
     let reqHeader=new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'});
    return this.http.post(apiUrl+"login",data,{headers:reqHeader})
-  //  .pipe(catchError(
-  //     err=>{return throwError(err.message || "An Error Occure")}))
+  }
+
+  isAuthenticated(): boolean{
+    if (localStorage.getItem('userToken')){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }

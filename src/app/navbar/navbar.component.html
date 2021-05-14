@@ -46,21 +46,21 @@
                         <a class="nav-link" href="/Favorite/My_FaviorateProduct"><i class="fas fa-heart"></i></a>
                     </li>
                     <li class="nav-item mr-1 p-1 btn-cart">
-                        <a class="nav-link" href="/Cart/Index"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
                     </li>
                 <!-- } -->
 
                 <!-- @if (!User.Identity.IsAuthenticated){ -->
                     <li class="nav-item mr-1 p-1 nav-login">
-                        <a class="nav-link border rounded" routerLink="LogIn">Login</a>
+                        <a class="nav-link border rounded" *ngIf="!IsLoggin" routerLink="LogIn">Login</a>
                     </li>
                     <li class="nav-item mr-1 p-1 nav-regist">
-                        <a class="nav-link border rounded" routerLink="/regist">Regist</a>
+                        <a class="nav-link border rounded"  *ngIf="!IsLoggin" routerLink="/regist">Regist</a>
                     </li>
                 <!-- } -->
                 <!-- @if (User.Identity.IsAuthenticated){ -->
                     <li class="nav-item mr-1 p-1 nav-Sign-Out">
-                        <a class="nav-link border rounded btn-sign-out" (click)="LogOut()">Sign Out</a>
+                        <a class="nav-link border rounded btn-sign-out"  *ngIf="IsLoggin"  (click)="LogOut()">Sign Out</a>
                     </li>
                 <!-- } -->
 

@@ -87,24 +87,15 @@ export class EditCategoryComponent implements OnInit {
       {
        console.log("data after subscribe"+Data);
       });
-      // console.log(this.category);
       this.route.navigate(['/Category'])
       // .then(() => {
       //   window.location.reload();
       // });
-      
-
   }
   sendImage(){
     console.log( "image name" + this.fileToupload);
    this.fileUploadService.postFile(this.fileToupload).subscribe(
-
-     data=>{
-       console.log("Data Image is " + data)
-           },
-        err=>{
-             }
-          )
+     data=>{console.log("Data Image is " + data)},err=>{})
    }
   
 

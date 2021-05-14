@@ -21,6 +21,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
@@ -44,7 +45,8 @@ import { OrderComponent } from './order/order.component';
     HomeComponent,
     Regist2Component,
     EditCategoryComponent,
-    OrderComponent
+    OrderComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

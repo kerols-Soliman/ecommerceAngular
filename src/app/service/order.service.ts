@@ -12,16 +12,8 @@ export class OrderService {
   constructor(private http : HttpClient) { }
   url:string = apiUrl+"api/Order"
 
-  PostOrder(){
-    return this.http.post(this.url,{headers:new HttpHeaders(
-
-      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
-
-    )}).pipe(catchError(
-      (err)=>{return throwError(err.message || "Server Error")})
-    )
-  }
-  GetOrders(){
+  GetOrders()
+  {
     return this.http.get(this.url,{headers:new HttpHeaders(
 
       {"Authorization":"Bearer "+localStorage.getItem('userToken')}
@@ -30,4 +22,17 @@ export class OrderService {
       (err)=>{return throwError(err.message || "Server Error")})
     )
   }  
+
+  PostOrder()
+  {
+    return this.http.post(this.url,'',{headers:new HttpHeaders(
+
+      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
+
+    )}).pipe(catchError(
+      (err)=>{return throwError(err.message || "Server Error")})
+    )
+  }
+
+  
 }

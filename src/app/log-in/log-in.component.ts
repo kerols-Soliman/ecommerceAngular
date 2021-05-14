@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ILogUser } from '../interface/LogUeser';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { AccountService } from '../service/account.service';
 
 @Component({
@@ -14,7 +16,8 @@ export class LogInComponent implements OnInit {
 
   user:ILogUser;
   IslogInError:boolean=false;
-  constructor(private fb:FormBuilder,private acountService:AccountService,private router:Router) { }
+  constructor(private fb:FormBuilder,private acountService:AccountService
+    ,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -52,7 +55,8 @@ export class LogInComponent implements OnInit {
       this.IslogInError=true;
     }
     );
-
+    
+    // this.nav.IsLoggin=false;
   }
 
 }

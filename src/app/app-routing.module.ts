@@ -9,6 +9,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
 import { OrderComponent } from './order/order.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'createCategory',component:CreateCategoryComponent},
   {path:'createProduct',component:CreateProductComponent},
   {path:'regist',component:Regist2Component},
+  {path:'cart',component:CartComponent},
 ];
 
 @NgModule({
