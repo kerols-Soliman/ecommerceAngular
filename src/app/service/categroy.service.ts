@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from 'src/config';
 import { ICategroy } from '../interface/Categroy';
+import { IProduct } from '../interface/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class CategroyService {
       (err)=>{return throwError(err.message || "Server Error")})
     )
   }
+
   
   postCategory(categ:ICategroy){
     return this.http.post<ICategroy>(this.url,categ).pipe(catchError(

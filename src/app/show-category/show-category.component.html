@@ -5,8 +5,8 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-4" *ngFor="let category of AllCategory">
-        <div class="card" >
+    <div class="col-12 col-md-4" style="cursor:pointer;" *ngFor="let category of AllCategory">
+        <div class="card" (click)="ShowCategoryProduct(category.Id,category.Name)">
             <div class="data">
                 <img src={{category.Image}} class="card-img-top img-fluid" alt="...">
                 <h5 class="card-title">{{category.Name}}</h5>

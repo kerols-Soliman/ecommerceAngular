@@ -1,42 +1,48 @@
 
-
-<div class="row">
-    <div class="col-12 col-md-8">
-        <h2 class="title">Shopping Cart</h2>
-        <!--  -->
-            <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let product of products" >
-                <div class="row">
-                    <div class="col-4 ">
-                        <img src="{{product.Image}}" class="img-fluid" style="height:10rem;"/>
-                    </div>
-                    <div class="col-8">
-                        <h3 class="mb-4">{{product.Name}}</h3>
-                        <h5 class="price">{{product.Price}} EGP</h5>
-                        <div>
-                            <h5 class="d-inline mr-2">Quantity</h5>
-                            <div class="row ml-3 my-2">
-                                <button class="btn  btn-orange col-2 col-md-1 rounded-left" (click)="Decrease(productQty,product)" style="border-radius:0;">-</button>
-                                <div class="border-0 rounded-left p-0  col-2 col-md-1  d-flex justify-content-center">
-                                    <input type="text" class="form-control text-center rounded-0 input-number border-0  px-1" value="{{product.Quentity}}" disabled min="1" #productQty>
+<div *ngIf="isEmprty; else showProducts">
+    <h1>You Cart Is Empty</h1>
+</div>
+<ng-template #showProducts>
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <h2 class="title">Shopping Cart</h2>
+            <!--  -->
+                <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let product of products" >
+                    <div class="row">
+                        <div class="col-4 ">
+                            <img src="{{product.Image}}" class="img-fluid" style="height:10rem;"/>
+                        </div>
+                        <div class="col-8">
+                            <h3 class="mb-4">{{product.Name}}</h3>
+                            <h5 class="price">{{product.Price}} EGP</h5>
+                            <div>
+                                <h5 class="d-inline mr-2">Quantity</h5>
+                                <div class="row ml-3 my-2">
+                                    <button class="btn  btn-orange col-2 col-md-1 rounded-left" (click)="Decrease(productQty,product)" style="border-radius:0;">-</button>
+                                    <div class="border-0 rounded-left p-0  col-2 col-md-1  d-flex justify-content-center">
+                                        <input type="text" class="form-control text-center rounded-0 input-number border-0  px-1" value="{{product.Quentity}}" disabled min="1" #productQty>
+                                    </div>
+                                    <button class="btn  btn-orange col-2 col-md-1 rounded-right" (click)="Increase(productQty,product)" style="border-radius:0;">+</button>
                                 </div>
-                                <button class="btn  btn-orange col-2 col-md-1 rounded-right" (click)="Increase(productQty,product)" style="border-radius:0;">+</button>
+                                
                             </div>
-                            
                         </div>
                     </div>
+    
+                    <div class="mt-2 border-top ">
+                        <button class="btn mx-3 mt-2 p-0">Save To Favorite</button>
+                        <button class="btn mx-3 mt-2 p-0" (click)="delete(product.Id)">Delete</button>
+                    </div>
                 </div>
-
-                <div class="mt-2 border-top ">
-                    <button class="btn mx-3 mt-2 p-0">Save To Favorite</button>
-                    <button class="btn mx-3 mt-2 p-0" (click)="delete(product.Id)">Delete</button>
-                </div>
-            </div>
-    </div>
-    <div class="col-12 col-md-4">
-        <div class="border rounded p-2">
-            <h3 class="totalPrice">Total :</h3>
-            <h4 class="ml-4">{{totalPrice}} EGP</h4>
         </div>
-        <button class="btn btn-orange mt-3 w-100 p-2" (click)="MakeOrder()" [disabled]="products.length==0">Make Order</button>
+        <div class="col-12 col-md-4">
+            <div class="border rounded p-2">
+                <h3 class="totalPrice">Total :</h3>
+                <h4 class="ml-4">{{totalPrice}} EGP</h4>
+            </div>
+            <button class="btn btn-orange mt-3 w-100 p-2" (click)="MakeOrder()" [disabled]="products.length==0">Make Order</button>
+        </div>
     </div>
-</div>
+    
+</ng-template>
+

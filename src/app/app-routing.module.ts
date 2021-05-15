@@ -15,8 +15,10 @@ import { Regist2Component } from './regist/regist.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { AuthGuard } from './Auth/auth.guard';
+import { FaviorateProductsComponent } from './faviorate-products/faviorate-products.component';
 
 const routes: Routes = [
+  {path:"FaviorateProducts",component:FaviorateProductsComponent,canActivate:[AuthGuard]},
   {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
   { path:'', redirectTo: '/home', pathMatch: 'full'},
   { path:"home", component: HomeComponent },

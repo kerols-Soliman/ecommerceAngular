@@ -8,13 +8,13 @@ import { IProduct } from '../interface/Product';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class FaviorateService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http : HttpClient) { }
 
-  url=apiUrl+"api/Cart"
+  url=apiUrl+"api/Faviorate"
 
-  getproductInCart(){
+  getAllFaviorateProducts(){
     return this.http.get<IProduct[]>(this.url,{headers:new HttpHeaders(
       {"Authorization":"Bearer "+localStorage.getItem('userToken')}
     )}).pipe(
@@ -22,16 +22,17 @@ export class CartService {
     )
   }
 
-  edit(productId,product){
-    return this.http.put(this.url+"/"+productId,product,{headers:new HttpHeaders(
-        {"Authorization":"Bearer "+localStorage.getItem('userToken')}
+  AddProductToFaviorates(pro_Id:number){
+    return this.http.post(this.url+"/"+pro_Id,{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
     )}).pipe(catchError(err=>{return throwError(err.message||"error occure")}))
   }
 
-  deleteFromCart(pro_Id:number)
-  {
+  deleteProductFromFaviorates(pro_Id:number){
     return this.http.delete(this.url+"/"+pro_Id,{headers:new HttpHeaders(
       {"Authorization":"Bearer "+localStorage.getItem('userToken')}
     )}).pipe(catchError(err=>{return throwError(err.message||"error occure")}))
   }
+
+
 }

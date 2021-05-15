@@ -27,6 +27,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { AuthGuard } from './Auth/auth.guard';
+import { FaviorateProductsComponent } from './faviorate-products/faviorate-products.component';
 
 
 
@@ -50,6 +51,7 @@ import { AuthGuard } from './Auth/auth.guard';
     CartComponent,
     ProfileEditComponent,
     OrderComponent,
+    FaviorateProductsComponent,
   ],
   imports: [
     BrowserModule,

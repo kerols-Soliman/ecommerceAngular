@@ -39,6 +39,10 @@ export class ShowCategoryComponent implements OnInit {
   {
       this.route.navigate(['EditCategory',id]);
   }
+  ShowCategoryProduct(id:number,CatName:string)
+  {
+    // this.route.navigate(['CategoryProducts',id,CatName]);
+  }
   checkAdmin(role):boolean
   {
     return this.userService.RoleMatch(role);

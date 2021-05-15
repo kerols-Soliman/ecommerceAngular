@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
 
   products:IProduct[];
   totalPrice:number=0;
-  
+  isEmprty:boolean=false;
 
   ngOnInit(): void {
     this.loadData();
@@ -29,6 +29,11 @@ export class CartComponent implements OnInit {
       this.products.forEach(p => {
         this.totalPrice+=p.Quentity*p.Price;
       });
+      if(this.products.length===0)
+      {
+        console.log("empty");
+        this.isEmprty=true;
+      }
     })
   }
   delete(pro_Id:number){
