@@ -16,6 +16,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './Auth/auth.guard';
+import { ProductSeachComponent } from './product-seach/product-seach.component';
 
 const routes: Routes = [
   {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'regist',component:Regist2Component},
   {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
   {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]},
+  {path:'search/:name',component:ProductSeachComponent},
   {path:'**',component:NotFoundComponent}
 ];
 

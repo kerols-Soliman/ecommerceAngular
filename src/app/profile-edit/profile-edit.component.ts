@@ -4,6 +4,7 @@ import { apiUrl } from 'src/config';
 import { ConfirmPasswordValidator } from '../ConfirmPasswordValidator';
 import { IUser } from '../interface/User';
 import { AccountService } from '../service/account.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { FileUploadServiceService } from '../service/file-upload-service.service
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor(private accountService:AccountService,private fb:FormBuilder,private fileService:FileUploadServiceService) { }
+  constructor(private accountService:AccountService,private fb:FormBuilder
+    ,private fileService:FileUploadServiceService,private sharedDataService:DataSharingServiceService) { }
 
   
   url=String(apiUrl)
@@ -73,6 +75,7 @@ export class ProfileEditComponent implements OnInit {
       this.updateUser.Image=this.FileToUpload.name;
     }
     this.accountService.Edit(this.updateUser).subscribe(d=>console.log(d))
+    this.sharedDataService.IsUserLogIn.next(true)
   }
 
 

@@ -43,7 +43,14 @@ export class ProductService {
       }
 
     ))
+  }
 
+  searchByName(pro_Nmae){
+    return this.http.get<IProduct[]>(apiUrl+"/api/search/"+pro_Nmae).pipe(catchError(
+      (err) => {
+        return throwError(err.message || " Server Error");
+      }
+    ))
   }
 
 }

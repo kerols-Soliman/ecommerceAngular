@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ICategroy } from '../interface/Categroy';
 import { CategroyService } from '../service/categroy.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
 
 @Component({
@@ -15,7 +16,9 @@ import { FileUploadServiceService } from '../service/file-upload-service.service
 export class CreateCategoryComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private categoryService:CategroyService,
-    private fileUpload:FileUploadServiceService,private route:Router) { }
+    private fileUpload:FileUploadServiceService,private route:Router,private dataSharingService:DataSharingServiceService) {
+      this.dataSharingService.IsCategoryEdited.next(true)
+    }
 
   newCategory:ICategroy;
   FileToUpload:File=null;
@@ -51,10 +54,15 @@ export class CreateCategoryComponent implements OnInit {
     
     this.fileUpload.postFile(this.FileToUpload).subscribe(data=>console.log(data))
     
-    this.categoryService.postCategory(this.newCategory).subscribe(data=>console.log(data))
+    this.categoryService.postCategory(this.newCategory).subscribe(data=>{
+      console.log(data)
+    })
+    this.route.navigate(['/Category'])
         
   }
   ngOnInit(): void {
   }
+
+
 
 }

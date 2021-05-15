@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { apiUrl } from 'src/config';
 import { ICategroy } from '../interface/Categroy';
 import { CategroyService } from '../service/categroy.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class EditCategoryComponent implements OnInit {
     private http: HttpClient,
     private fileUploadService:FileUploadServiceService,
     private spinner:NgxSpinnerService,
-   private route:Router,
+   private route:Router,private dataSharingService:DataSharingServiceService,
    private fb:FormBuilder,private activeRoute:ActivatedRoute) 
                         { 
                           this.activeRoute.params.subscribe(params=>
@@ -83,35 +84,22 @@ export class EditCategoryComponent implements OnInit {
       this.category.Image=this.oldImage;
     }
     
-   this.CatService.UpdateCategory(this.category,this.categoryId).subscribe(Data=>
-      {
-       console.log("data after subscribe"+Data);
-      });
-      this.route.navigate(['/Category'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    this.CatService.UpdateCategory(this.category,this.categoryId).subscribe(Data=>
+    {
+      console.log("data after subscribe"+Data);
+    })
+    this.dataSharingService.IsCategoryEdited.next(true)
+    
+    this.route.navigate(['/Category'])
+     
+      
   }
   sendImage(){
     console.log( "image name" + this.fileToupload);
-   this.fileUploadService.postFile(this.fileToupload).subscribe(
-     data=>{console.log("Data Image is " + data)},err=>{})
-   }
+    this.fileUploadService.postFile(this.fileToupload).subscribe(
+      data=>{console.log("Data Image is " + data)},err=>{})
+  }
   
-
-  // EditCategoryForm=this.fb.group({
-  //   Name:["zdad",[Validators.required,Validators.minLength(3)]],
-  //   Image:["",Validators.required]
-    
-  // })
-  // get Name(){
-  
-  //   return this.EditCategoryForm.get("Name");
-  // }
-  // get Image(){
-  //   return this.EditCategoryForm.get("Image");
-  // }
-
 
 }
 

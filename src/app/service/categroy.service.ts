@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from 'src/config';
-import { ICategroy } from '../interface/Categroy';
+import { ICategroy, ICategroyOfProduct } from '../interface/Categroy';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,7 @@ export class CategroyService {
   }
   GetById(id: number) {
     
-    return this.http.get<ICategroy>( this.url + "/" + id).pipe(catchError(err => {
+    return this.http.get<ICategroyOfProduct>( this.url + "/" + id).pipe(catchError(err => {
       return throwError(err.message || "There is an error");
     }))
   }

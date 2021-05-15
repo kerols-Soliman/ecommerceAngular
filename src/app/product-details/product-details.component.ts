@@ -3,6 +3,7 @@ import { IProduct } from '../interface/Product';
 import { ProductService } from '../service/product.service';
 import { NgxSpinner, NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner'
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -11,7 +12,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private productService:ProductService,private spinner:NgxSpinnerService,private activateRoute:ActivatedRoute) { }
+  constructor(private productService:ProductService,private spinner:NgxSpinnerService
+    ,private activateRoute:ActivatedRoute,private cartService:CartService) { }
 
   product:IProduct;
   Id:number;
@@ -41,7 +43,9 @@ export class ProductDetailsComponent implements OnInit {
       this.availableQuantity=true
   }
   
-
+  addToCart(){
+    this.cartService.post(this.product.Id,this.Quantity).subscribe(data=>console.log(data))
+  }
   
 
 }

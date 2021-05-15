@@ -22,6 +22,14 @@ export class CartService {
     )
   }
 
+  post(productID,qty){
+    return this.http.post<IProduct>(this.url+"/"+productID+"/"+qty,"",{headers:new HttpHeaders(
+      {"Authorization":"Bearer "+localStorage.getItem('userToken')}
+    )}).pipe(
+      catchError((err)=>{return throwError(err.message||'An error Occure')})
+    )
+  }
+
   edit(productId,product){
     return this.http.put(this.url+"/"+productId,product,{headers:new HttpHeaders(
         {"Authorization":"Bearer "+localStorage.getItem('userToken')}

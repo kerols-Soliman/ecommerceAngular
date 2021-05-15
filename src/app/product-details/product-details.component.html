@@ -32,7 +32,7 @@
 
         </div>
         <div class="row justify-content-center py-2">
-            <a class="btn btn-primary btn-orange mr-1 btn-Add-To-Card" href="/Cart/Create?productId=@Model.Id&quentity=1" id="cart-url">Add To Cart</a>
+            <a class="btn btn-primary btn-orange mr-1 btn-Add-To-Card" routerLink="/cart" (click)="addToCart()" id="cart-url">Add To Cart</a>
             <a href="/Favorite/AddProduct_TO_Faviorate/@Model.Id" class="btn btn-orange mr-1 btn-Add-To-Card">Add to Faviorate</a>
         </div>
     </div>

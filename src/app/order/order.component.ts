@@ -15,9 +15,11 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {   
     this.orderService.GetOrders().subscribe((data)=>
     {
+      
+      console.log("data");
+      console.log(data);
       this.orders=data;
       this.orders=this.orders.reverse();
-      console.log(data);
     },(err:HttpErrorResponse)=>
     {
       console.log("error Req");

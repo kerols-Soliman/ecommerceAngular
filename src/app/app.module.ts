@@ -28,6 +28,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './Auth/auth.guard';
+import { DataSharingServiceService } from './service/data-sharing-service.service';
+import { ProductSeachComponent } from './product-seach/product-seach.component';
 
 
 
@@ -52,6 +54,7 @@ import { AuthGuard } from './Auth/auth.guard';
     ProfileEditComponent,
     OrderComponent,
     NotFoundComponent,
+    ProductSeachComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,7 @@ import { AuthGuard } from './Auth/auth.guard';
     FormsModule,
     
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,DataSharingServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
