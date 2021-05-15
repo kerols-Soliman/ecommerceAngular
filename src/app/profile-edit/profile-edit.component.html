@@ -59,7 +59,7 @@
                 <div class="text-center">
                     <img [src]="photo" class="img-fluid imgeUpload" for="" (click)="imgFile.click()">
                 </div>
-                <small class="text-danger" > Image Is Required</small>
+                <small class="text-danger"> Image Is Required</small>
                 <input type="file" class="form-control-file d-none" id="exampleFormControlFile1" 
                     formControlName="Image" (change)="handleFileInput($event.target.files)" #imgFile accept="image/*">
 

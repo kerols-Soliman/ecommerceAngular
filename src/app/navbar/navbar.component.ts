@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../service/account.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { AccountService } from '../service/account.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router:Router,private accountService:AccountService) { }
+  constructor(private router:Router,private accountService:AccountService,private userService:UserService) { }
   IsLoggin:Boolean=false;
   photo;
   userName
@@ -30,5 +31,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/LogIn']);
   }
 
+  checkAdmin(role):boolean
+  {
+    return this.userService.RoleMatch(role);
+  }
 
 }

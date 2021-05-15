@@ -27,6 +27,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 
 
@@ -63,7 +64,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FormsModule,
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

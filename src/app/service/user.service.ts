@@ -21,7 +21,23 @@ export class UserService {
     return this.http.post<IUser>(this.url,user).pipe(catchError(err=>{return throwError(err.message || "error occure")}))
   }
 
-
+  RoleMatch(allowRoles): boolean{
+    var IsMatch=false;
+    var userRoles:string[]=JSON.parse(localStorage.getItem('userRoles'));
+ 
+    if(userRoles !=null)
+    {
+      allowRoles.forEach(element => {
+        if(userRoles.indexOf(element)>-1){
+          IsMatch=true;
+        } 
+    
+       });
+    }
+   
+ 
+    return IsMatch;
+   }
   // Regist(user:IUser){
    
   //   console.log("++"+user)
