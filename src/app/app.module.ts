@@ -24,6 +24,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsOfCategoryComponent } from './products-of-category/products-of-category.component';
+
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -50,6 +52,8 @@ import { ProductSeachComponent } from './product-seach/product-seach.component';
     HomeComponent,
     Regist2Component,
     EditCategoryComponent,
+    ProductsOfCategoryComponent,
+
     CartComponent,
     ProfileEditComponent,
     OrderComponent,

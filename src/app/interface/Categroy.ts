@@ -5,9 +5,11 @@ export interface ICategroy{
     "Name" :string,
     "Image":string  
 }
+
 export interface ICategroyOfProduct{
     "Id"?:number,
     "Name" :string,
     "Image":string,
     "Products":IProduct[]
 }
+
