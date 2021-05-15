@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
   proErr: string;
   flag: number = 1;
   prevCatID : number ;
+  
+  
+
 
   constructor(private categroyService: CategroyService, private productService: ProductService , private router : Router) { }
 
@@ -56,9 +59,10 @@ export class HomeComponent implements OnInit {
   addToCart(id){
     this.router.navigate(['/productDetails',id])
   }
-  showMore(id){
+  showMore(category){
 
-  
+    this.router.navigate(['/CategoryProducts',category.Id , category.Name])
 
   }
+  
 }

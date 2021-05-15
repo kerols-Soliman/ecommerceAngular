@@ -4,7 +4,7 @@
         <h2>My Orders</h2>
         <!--  -->
         <div *ngFor="let order of orders" class="bord mb-3">
-         <p style="color: blue;">Date : {{order.Date}}</p>
+         <p style="color: blue;">Date : {{order.Date | date:'medium'}}</p>
          <p style="color: blue;">TotalPrice : {{order.TotalPrice}} EGP</p>
             <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let product of order.Products">
                 <div class="row">

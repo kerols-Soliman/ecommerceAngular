@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
@@ -14,7 +14,8 @@ export class ProductsOfCategoryComponent implements OnInit {
   categoryId:any;
   catName:string;
   products:any;
-  constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService) 
+  constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService , 
+   private router : Router) 
       {
         this.activeRoute.params.subscribe(params=>
           {
@@ -51,4 +52,11 @@ export class ProductsOfCategoryComponent implements OnInit {
     "margin-bottom": "7px"
   }
 
+  onProductClick(prod){
+
+    this.router.navigate(['/productDetails',prod.Id])
+
+  }
+
 }
+
