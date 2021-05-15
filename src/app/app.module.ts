@@ -22,6 +22,8 @@ import { ShowCategoryComponent } from './show-category/show-category.component';
 import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsOfCategoryComponent } from './products-of-category/products-of-category.component';
+
 
 
 
@@ -40,7 +42,9 @@ import { HomeComponent } from './home/home.component';
     EditCategoryComponent,
     HomeComponent,
     Regist2Component,
-    EditCategoryComponent
+    EditCategoryComponent,
+    ProductsOfCategoryComponent,
+
   ],
   imports: [
     BrowserModule,

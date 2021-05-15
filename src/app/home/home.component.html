@@ -6,17 +6,38 @@
           <div class="d-inline-block">
             <h3 [style.margin]="'5px'">{{cat.Name}}</h3>
           </div>
-          <div class="d-inline-block float-right m-2"> <a href="#" class="btn-link text-white ">More</a> </div>
+          <div class="d-inline-block float-right m-2"> <a  class="btn-link text-white" (click)="showProducts(cat)" style="cursor: pointer;">More</a> </div>
         </div>
 <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
  <!-- <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
  <div class="carousel-inner">
  <div class="carousel-item active"> -->
 
-  <div *ngFor="let prod of Products; let i = index">
-  <div *ngIf="FilterProduct(cat , prod)">
-    <div *ngIf="i > 3">   
+  <!-- <div *ngFor="let prod of getProducts(cat); let i = index">
 
+     <h1>{{i}}</h1>
+    <div [ngClass]="cardClass">
+      <img class="card-img-top" [src]="prod.Image" alt="Card image cap" style="height: 9rem; width: 10rem;">
+      <div class="card-body">
+        <h6 class="card-title mb-0">{{prod.Name}}</h6>
+        <p class="card-text mb-0">{{prod.Price}}</p>
+        <a class="btn show-btn" (click)="onProductClick(prod)">Show Deatils</a>
+      </div>
+ 
+  </div>
+</div> -->
+
+
+ <!-- </div>
+
+ </div> 
+
+ </div>  -->
+
+ <!-- <div *ngFor="let prod of Products; let i = index">
+  <div *ngIf="FilterProduct(cat , prod)">
+  
+     <h1>{{i}}</h1>
     <div [ngClass]="cardClass">
       <img class="card-img-top" [src]="prod.Image" alt="Card image cap" style="height: 9rem; width: 10rem;">
       <div class="card-body">
@@ -25,16 +46,9 @@
         <a class="btn show-btn" (click)="onProductClick(prod)">Show Deatils</a>
       </div>
     </div>
+
   </div>
-  </div>
-</div>
-
-
- <!-- </div>
-
- </div> 
-
- </div>  -->
+</div> --here>
       
 <!--/////////////////////////////////////////////////////////////-->
       </div>
@@ -61,5 +75,21 @@
         <a class="btn show-btn" (click)="onProductClick(prod)">Show Deatils</a>
       </div>
     </div>
+  </div>
+</div> -->
+
+<!-- <div *ngFor="let prod of Products; let i = index">
+  <div *ngIf="FilterProduct(cat , prod)">
+  
+     <h1>{{i}}</h1>
+    <div [ngClass]="cardClass">
+      <img class="card-img-top" [src]="prod.Image" alt="Card image cap" style="height: 9rem; width: 10rem;">
+      <div class="card-body">
+        <h6 class="card-title mb-0">{{prod.Name}}</h6>
+        <p class="card-text mb-0">{{prod.Price}}</p>
+        <a class="btn show-btn" (click)="onProductClick(prod)">Show Deatils</a>
+      </div>
+    </div>
+
   </div>
 </div> -->

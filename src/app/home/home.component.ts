@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
 import { from } from 'rxjs';
 import { ICategroy } from '../interface/Categroy';
 import { IProduct } from '../interface/Product';
@@ -97,10 +98,30 @@ export class HomeComponent implements OnInit {
     
 
   }
+  getProducts(cat){
+
+   this.categroyService.getAllCategoryProducts(cat.Id).subscribe(
+    
+    (data)=> {
+      console.log("method : " + data )
+      return data ;
+    } ,
+    (err)=>{
+
+      this.proErr = err;
+    } 
+   )
+
+  }
   onProductClick(prodct : IProduct){
     
     this.router.navigate(["/productDetails" , prodct.Id])
     console.log("pushed")
+  }
+
+  showProducts(cat : ICategroy){
+
+    this.router.navigate(['CategoryProducts',cat.Id , cat.Name]);
   }
 
 }
