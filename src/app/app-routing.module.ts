@@ -20,11 +20,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './Auth/auth.guard';
-<<<<<<< HEAD
 import { FaviorateProductsComponent } from './faviorate-products/faviorate-products.component';
-=======
 import { ProductSeachComponent } from './product-seach/product-seach.component';
->>>>>>> bbe7459f1b848db522aaa479a51d7994a29fab33
 
 const routes: Routes = [
   {path:"FaviorateProducts",component:FaviorateProductsComponent,canActivate:[AuthGuard]},

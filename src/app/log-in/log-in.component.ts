@@ -47,7 +47,7 @@ export class LogInComponent implements OnInit {
     this.acountService.LoginUser(this.user).subscribe((data)=>
       {
         localStorage.setItem('userToken',data['access_token']);
-        // localStorage.setItem('userRoles',data['roles']);
+        localStorage.setItem('userRoles',data['roles']);
         this.sharedDataService.IsUserLogIn.next(true)
         this.router.navigate(['/home']);
       },(err:HttpErrorResponse)=>
