@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../interface/Product';
 import { ProductService } from '../service/product.service';
 import { NgxSpinner, NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner'
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -10,14 +11,17 @@ import { NgxSpinner, NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner'
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private productService:ProductService,private spinner:NgxSpinnerService) { }
+  constructor(private productService:ProductService,private spinner:NgxSpinnerService,private activateRoute:ActivatedRoute) { }
 
   product:IProduct;
-  
+  Id:number;
   availableQuantity:boolean=true;
   ngOnInit(): void {
     this.spinner.show()
-    this.productService.GetById(1).subscribe(data=>{
+    this.activateRoute.paramMap.subscribe((param:ParamMap)=>{
+      this.Id=parseInt(param.get('id'))
+    })
+    this.productService.GetById(this.Id).subscribe(data=>{
       this.product=data;
       this.spinner.hide();
     })

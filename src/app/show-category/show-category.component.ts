@@ -4,6 +4,7 @@ import { data } from 'jquery';
 import { NgxSpinner, NgxSpinnerService, Spinner } from 'ngx-spinner';
 import { ICategroy } from '../interface/Categroy';
 import { CategroyService } from '../service/categroy.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-show-category',
@@ -13,7 +14,7 @@ import { CategroyService } from '../service/categroy.service';
 export class ShowCategoryComponent implements OnInit {
 
   constructor(private categoryService:CategroyService,private route:Router
-    ,private spinner:NgxSpinnerService) 
+    ,private spinner:NgxSpinnerService,private userService:UserService) 
     {
       
      }
@@ -37,6 +38,10 @@ export class ShowCategoryComponent implements OnInit {
   EditCategory(id:number)
   {
       this.route.navigate(['EditCategory',id]);
+  }
+  checkAdmin(role):boolean
+  {
+    return this.userService.RoleMatch(role);
   }
 
 }

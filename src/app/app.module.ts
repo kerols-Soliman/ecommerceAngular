@@ -21,9 +21,15 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { Regist2Component } from './regist/regist.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CartComponent } from './cart/cart.component';
+import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsOfCategoryComponent } from './products-of-category/products-of-category.component';
 
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { OrderComponent } from './order/order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 
 
@@ -40,11 +46,16 @@ import { ProductsOfCategoryComponent } from './products-of-category/products-of-
     CreateCategoryComponent,
     ShowCategoryComponent,
     EditCategoryComponent,
+    LogInComponent,
     HomeComponent,
     Regist2Component,
     EditCategoryComponent,
     ProductsOfCategoryComponent,
 
+    CartComponent,
+    ProfileEditComponent,
+    OrderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,7 @@ import { ProductsOfCategoryComponent } from './products-of-category/products-of-
     FormsModule,
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

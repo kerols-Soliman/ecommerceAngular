@@ -11,7 +11,7 @@
                 <img src={{category.Image}} class="card-img-top img-fluid" alt="...">
                 <h5 class="card-title">{{category.Name}}</h5>
             </div>
-            <div class="card-body text-center">
+            <div class="card-body text-center" *ngIf="checkAdmin(['Admin'])">
               <a class="btn btn-edit mr-2" (click)="EditCategory(category.Id)">Edit</a>
               <a (click)="remove(category.Id)" class="btn btn-orange">Remove</a>
             </div>

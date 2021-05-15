@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ConfirmPasswordValidator } from '../ConfirmPasswordValidator';
 import { IUser } from '../interface/User';
 import { AccountService } from '../service/account.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
@@ -28,7 +29,7 @@ export class Regist2Component implements OnInit {
     confirmPassword:['',[Validators.required,Validators.minLength(8)]],          
     Gender:['',[Validators.required]],  
     Image:['',[Validators.required]]
-  })
+  },{Validators:[ConfirmPasswordValidator]}as any)
 
   handleFileInput(file:FileList){
     this.FileToUpload=file.item(0);

@@ -7,8 +7,7 @@ import { apiUrl } from 'src/config';
   providedIn: 'root'
 })
 export class FileUploadServiceService {
-  // API url
- // baseApiUrl = "https://file.io"
+  
   constructor( private http:HttpClient) { }
 
   url : string = apiUrl+"api/fileupload" ; 

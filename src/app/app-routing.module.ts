@@ -8,25 +8,36 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CartComponent } from './cart/cart.component';
+import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
 import { ProductsOfCategoryComponent } from './products-of-category/products-of-category.component';
 
 
 
 
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { OrderComponent } from './order/order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './Auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: "home", component: HomeComponent },
-  {path:"Product/edit",component:EditProductComponent},
-  {path:"EditCategory/:id",component:EditCategoryComponent},
+  {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
+  { path:'', redirectTo: '/home', pathMatch: 'full'},
+  { path:"home", component: HomeComponent },
+  {path:"LogIn",component:LogInComponent},
+  {path:"Product/edit",component:EditProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
+  {path:"EditCategory/:id",component:EditCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'productDetails/:id',component:ProductDetailsComponent},
   {path:'Category',component:ShowCategoryComponent},
-  {path:'createCategory',component:CreateCategoryComponent},
-  {path:'createProduct',component:CreateProductComponent},
+  {path:'createCategory',component:CreateCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
+  {path:'createProduct',component:CreateProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'regist',component:Regist2Component},
   {path:"CategoryProducts/:id/:CatName",component:ProductsOfCategoryComponent},
 
+  {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
+  {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]},
+  {path:'**',component:NotFoundComponent}
 ];
 
 @NgModule({

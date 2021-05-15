@@ -22,10 +22,8 @@ export class CreateProductComponent implements OnInit {
   errMsg: string
   catErrMsg : string
   product: IProduct
- // shortLink: string = "";
- // loading: boolean = false; // Flag variable
-  fileToupload: File = null; // Variable to store fil
-  
+  FileToUpload: File = null;
+  photo="/assets/Image/upload.png"
 
   CreateProductForm = this.fb.group({
     productName: ["", [Validators.required, Validators.minLength(4)]],
@@ -80,12 +78,11 @@ export class CreateProductComponent implements OnInit {
       "Price": this.productPrice.value,
       "Quentity": this.productQuentity.value,
       "Description": this.productDescription.value,
-      "Image": this.fileToupload.name,
+      "Image": this.FileToUpload.name,
       "Discount": this.productDiscount.value,
       "Category_Id": this.categroy.value
     }
     
-    console.log(this.product)
     this.productService.postProduct(this.product).subscribe(
       response => {
         this.responseId = response.Id;
@@ -98,13 +95,19 @@ export class CreateProductComponent implements OnInit {
     console.log(this.errMsg);
   }
 
-  handleFileInput(files : FileList){
-    this.fileToupload = files.item(0); 
+  handleFileInput(file:FileList){
+    this.FileToUpload=file.item(0);
+
+    var reader = new FileReader();  
+    reader.onload = (event: any) => {  
+        this.photo = event.target.result;  
+    }  
+    reader.readAsDataURL(this.FileToUpload);  
   }
 
   sendImage(){
-    console.log( "image name" + this.fileToupload)
-   this.fileUploadService.postFile(this.fileToupload).subscribe(
+    console.log( "image name" + this.FileToUpload)
+   this.fileUploadService.postFile(this.FileToUpload).subscribe(
 
      data=>{
       
@@ -117,29 +120,3 @@ export class CreateProductComponent implements OnInit {
    )
    }
   }
-
- // On file Select
-//  onChange(event) {
-//   this.file = event.target.files[0];
-  
-// }
-
-//  //file     Upload
-//  onUpload() {
-//   this.loading = !this.loading;
-//   console.log(this.file);
-//   this.fileUploadService.upload(this.file).subscribe(
-//       (event: any) => {
-//           if (typeof (event) === 'object') {
-
-//               // Short link via api response
-//               this.shortLink = event.link;
-//               console.log(this.shortLink);
-
-//               this.loading = false; // Flag variable 
-//           }
-//       }
-//   );
-// }
-
-
