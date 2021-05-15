@@ -11,4 +11,10 @@ export class DataSharingServiceService {
   IsCategoryEdited=new BehaviorSubject(false);
 
   IsUserLogIn=new BehaviorSubject(false)
+
+  IsSearchInput=new BehaviorSubject("");
+
+  IsCartChanged=new BehaviorSubject(false)
+
+  IsOrderChanged=new BehaviorSubject(false);
 }

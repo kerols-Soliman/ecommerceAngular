@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { OrderService } from '../service/order.service';
 
 @Component({
@@ -10,14 +11,18 @@ import { OrderService } from '../service/order.service';
 export class OrderComponent implements OnInit {
 
   orders:any;
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService:OrderService,private dataSharedService:DataSharingServiceService) { 
+    this.dataSharedService.IsOrderChanged.subscribe(data=>{
+      this.load();
+    })
+  }
 
   ngOnInit(): void {   
+    this.load()
+  }
+  load(){
     this.orderService.GetOrders().subscribe((data)=>
     {
-      
-      console.log("data");
-      console.log(data);
       this.orders=data;
       this.orders=this.orders.reverse();
     },(err:HttpErrorResponse)=>

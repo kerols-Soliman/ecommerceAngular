@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { from } from 'rxjs';
 import { ICategroy, ICategroyOfProduct } from '../interface/Categroy';
 import { IProduct } from '../interface/Product';
@@ -25,16 +26,18 @@ export class HomeComponent implements OnInit {
   
 
 
-  constructor(private categroyService: CategroyService, private productService: ProductService , private router : Router) { }
+  constructor(private categroyService: CategroyService, private productService: ProductService ,
+    private spinner:NgxSpinnerService, private router : Router) { }
 
 
 
   ngOnInit(): void {
-
+    this.spinner.show();
     this.categroyService.getAllCategories().subscribe(
       (data) => {
         this.categroyies = data;
         this.load()
+        this.spinner.hide()
       },
       (err) => {
         this.catErr = err;

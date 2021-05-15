@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICategroy } from '../interface/Categroy';
 import { AccountService } from '../service/account.service';
+import { CategroyService } from '../service/categroy.service';
 import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { UserService } from '../service/user.service';
 
@@ -12,7 +14,8 @@ import { UserService } from '../service/user.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private router:Router,private accountService:AccountService
-    ,private userService:UserService,private sharedDataService:DataSharingServiceService) {
+    ,private userService:UserService,private sharedDataService:DataSharingServiceService,
+      private categoryService:CategroyService) {
       this.sharedDataService.IsUserLogIn.subscribe(data=>{
         this.IsLoggin=data
         this.loadData()
@@ -20,20 +23,27 @@ export class NavbarComponent implements OnInit {
     }
   IsLoggin:Boolean=false;
   photo;
-  userName
+  userName;
+  AllCategory:ICategroy[]
   ngOnInit(): void {
     this.IsLogged()
     this.loadData()
   }
   loadData(){
+    this.categoryService.getAllCategories().subscribe(data=>{
+      this.AllCategory=data
+      console.log(data)
+    })
     this.accountService.GetUser().subscribe(data=>{
       this.photo=data.Image
       this.userName=data.Name
     })
   }
+
   IsLogged(){
     this.IsLoggin=this.accountService.isAuthenticated();
   }
+
   LogOut()
   {
     localStorage.removeItem('userToken');

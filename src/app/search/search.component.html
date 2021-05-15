@@ -3,10 +3,11 @@
         <form action="/Product/Search" method="get">
             <div class="row ">
                 <div class="col-12 col-md-8">
-                    <input type="search"  name="ProductName" class="form-control" placeholder="search about product">
+                    <input type="search"  name="ProductName" class="form-control" #seachInput placeholder="search about product">
                 </div>
                 <div class="col-12 col-md-4">
-                    <input type="submit" value="Search" class="btn btn-primary btn-orange w-100"/>
+                    <input type="submit" value="Search" class="btn btn-primary btn-orange w-100"
+                    (click)="search(seachInput.value)"/>
                 </div>
             </div>
 

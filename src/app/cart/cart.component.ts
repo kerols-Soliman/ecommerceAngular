@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from '../interface/Product';
 import { CartService } from '../service/cart.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
+import { FaviorateService } from '../service/faviorate.service';
 import { OrderService } from '../service/order.service';
 
 @Component({
@@ -12,7 +14,13 @@ import { OrderService } from '../service/order.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:CartService,private route:Router,private orderService:OrderService) { }
+  constructor(private cartService:CartService,private route:Router,private orderService:OrderService,
+    private dataSharedService:DataSharingServiceService , private favouriteService : FaviorateService ) {
+      this.dataSharedService.IsCartChanged.subscribe(data=>{
+        this.isEmprty=false
+        this.loadData()
+      })
+    }
 
   products:IProduct[];
   totalPrice:number=0;
@@ -42,6 +50,16 @@ export class CartComponent implements OnInit {
     
   }
 
+  saveProduct(product){
+
+    this.favouriteService.AddProductToFaviorates(product.Id).subscribe(
+
+      data=> console.log(data)
+    )
+    
+    
+  }
+
   changeQty(product:IProduct,qty){
     product.Quentity=qty;
     this.cartService.edit(product.Id,product).subscribe(data=>this.loadData())
@@ -64,6 +82,7 @@ export class CartComponent implements OnInit {
     this.orderService.PostOrder().subscribe((data)=>
       { 
         this.route.navigate(['/MyOrders']);
+        this.dataSharedService.IsOrderChanged.next(true);
       },(err:HttpErrorResponse)=>
       {
         console.log("error Req");

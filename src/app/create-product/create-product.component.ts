@@ -1,6 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
@@ -14,7 +15,8 @@ import { ProductService } from '../service/product.service';
 export class CreateProductComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private productService: ProductService 
-    , private categroyService : CategroyService  , private fileUploadService: FileUploadServiceService   ) { }
+    , private categroyService : CategroyService  ,
+     private fileUploadService: FileUploadServiceService ,private router : Router   ) { }
 
 
   catgoryies = [];
@@ -93,6 +95,8 @@ export class CreateProductComponent implements OnInit {
 
     );
     console.log(this.errMsg);
+
+    this.router.navigate(['Category'])
   }
 
   handleFileInput(file:FileList){
