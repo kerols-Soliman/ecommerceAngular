@@ -13,6 +13,9 @@ export class FaviorateService {
   constructor(private http : HttpClient) { }
 
   url=apiUrl+"api/Faviorate"
+  url2=apiUrl+"api/addFaviorate";
+  url3=apiUrl+"api/DeleteFaviorate";
+
 
   getAllFaviorateProducts(){
     return this.http.get<IProduct[]>(this.url,{headers:new HttpHeaders(
@@ -23,13 +26,13 @@ export class FaviorateService {
   }
 
   AddProductToFaviorates(pro_Id:number){
-    return this.http.post(this.url+"/"+pro_Id,{headers:new HttpHeaders(
+    return this.http.post(this.url2+"/"+pro_Id," ",{headers:new HttpHeaders(
       {"Authorization":"Bearer "+localStorage.getItem('userToken')}
     )}).pipe(catchError(err=>{return throwError(err.message||"error occure")}))
   }
 
   deleteProductFromFaviorates(pro_Id:number){
-    return this.http.delete(this.url+"/"+pro_Id,{headers:new HttpHeaders(
+    return this.http.delete(this.url3+"/"+pro_Id,{headers:new HttpHeaders(
       {"Authorization":"Bearer "+localStorage.getItem('userToken')}
     )}).pipe(catchError(err=>{return throwError(err.message||"error occure")}))
   }

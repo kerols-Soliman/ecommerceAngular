@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService, NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
 import { CategroyService } from '../service/categroy.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
 import { ProductService } from '../service/product.service';
 
@@ -21,21 +22,28 @@ export class EditProductComponent implements OnInit {
   imageSrc: string;
   imagePath:any;
   imgURL: any;
+  ProductId:number;
+  oldImage:any;
+  CategoryID:number;
+  CategoryName:string;
   constructor(private prodservice:ProductService,
        private CatService:CategroyService,
        private http: HttpClient,
        private fileUploadService:FileUploadServiceService,
        private spinner:NgxSpinnerService,
-      private route:Router )
+      private route:Router,private activeRoute:ActivatedRoute,private dataSharingService:DataSharingServiceService)
         {
-          
+          this.activeRoute.params.subscribe(params=>
+            this.ProductId=params['id']
+            );
          }
 
   ngOnInit(): void {
-    this.spinner.show();
-    this.prodservice.GetById(1).subscribe(Data=>
+    // this.spinner.show();
+    this.prodservice.GetById(this.ProductId).subscribe(Data=>
       {
         this.product=Data;
+        this.oldImage = Data.Image.replace('http://localhost:13149/Image/', '');
       });
       this.CatService.getAllCategories().subscribe(Data=>
         {
@@ -46,23 +54,34 @@ export class EditProductComponent implements OnInit {
 
   onSubmit(data:any)
   {
-    if(this.fileToupload !=null)
+    if(this.fileToupload !==null)
     {
       this.sendImage();
       this.product.Image=this.fileToupload.name;
     }
+    else
+    {
+      this.product.Image=this.oldImage;
+    }
     
-   this.prodservice.UpdateProduct(this.product,1).subscribe(Data=>
+   this.prodservice.UpdateProduct(this.product,this.ProductId).subscribe(Data=>
       {
         this.productAfterUPdate=Data;
       });
-      console.log(this.product);
-
-      this.route.navigate(['/edit'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
-
+     
+      this.prodservice.GetById(this.ProductId).subscribe(Data=>
+        {
+          this.CategoryID=Data.Category_Id;
+          this.CatService.GetById(this.CategoryID).subscribe(cat=>
+            {
+             this.CategoryName=cat.Name;
+             this.route.navigate(['/CategoryProducts',this.CategoryID,this.CategoryName])
+            })
+          
+        });
+        this.dataSharingService.IsProductEdited.next(true)
+      
+      
   }
 
   handleFileInput(files : FileList)

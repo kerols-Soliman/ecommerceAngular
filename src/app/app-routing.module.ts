@@ -20,19 +20,16 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './Auth/auth.guard';
-<<<<<<< HEAD
 import { FaviorateProductsComponent } from './faviorate-products/faviorate-products.component';
-=======
 import { ProductSeachComponent } from './product-seach/product-seach.component';
->>>>>>> bbe7459f1b848db522aaa479a51d7994a29fab33
 
 const routes: Routes = [
   {path:"FaviorateProducts",component:FaviorateProductsComponent,canActivate:[AuthGuard]},
   {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
-  { path:'', redirectTo: '/home', pathMatch: 'full'},
+  {path:'', redirectTo: '/home', pathMatch: 'full'},
   { path:"home", component: HomeComponent },
   {path:"LogIn",component:LogInComponent},
-  {path:"Product/edit",component:EditProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
+  {path:"EditProduct/:id",component:EditProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:"EditCategory/:id",component:EditCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'productDetails/:id',component:ProductDetailsComponent},
   {path:'Category',component:ShowCategoryComponent},
@@ -40,7 +37,6 @@ const routes: Routes = [
   {path:'createProduct',component:CreateProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'regist',component:Regist2Component},
   {path:"CategoryProducts/:id/:CatName",component:ProductsOfCategoryComponent},
-
   {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
   {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]},
   {path:'search/:name',component:ProductSeachComponent},

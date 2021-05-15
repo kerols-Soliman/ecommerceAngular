@@ -45,8 +45,7 @@ export class EditCategoryComponent implements OnInit {
          this.category=Data;
          let newurl:string=apiUrl+"/Image/";
          this.oldImage = Data.Image.replace('http://localhost:13149/Image/', '');
-        console.log(Data.Image);  
-        console.log(this.oldImage);        
+              
       });
   }
  
@@ -70,7 +69,6 @@ export class EditCategoryComponent implements OnInit {
   
   EditCategory(data:any)
   {
-    console.log(this.fileToupload);
     if(this.fileToupload !==null)
     {
       console.log("IFff");

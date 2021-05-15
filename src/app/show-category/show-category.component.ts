@@ -59,7 +59,7 @@ export class ShowCategoryComponent implements OnInit {
   }
   ShowCategoryProduct(id:number,CatName:string)
   {
-    // this.route.navigate(['CategoryProducts',id,CatName]);
+    this.route.navigate(['CategoryProducts',id,CatName]);
   }
   checkAdmin(role):boolean
   {

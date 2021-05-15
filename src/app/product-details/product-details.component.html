@@ -12,7 +12,7 @@
                 <h1 class="details-Name">{{product.Name}}</h1>
                 <div class="pt-md-2 ">
                     <h4 style="display: inline;"> Price : </h4>
-                    <h5 class="details-Price" style="display: inline;">{{product.Price}}</h5>
+                    <h5 class="details-Price" style="display: inline;">{{product.Price}} EGP</h5>
                 </div>
 
                 <h5 class="pt-md-2">Description :</h5>
@@ -33,7 +33,7 @@
         </div>
         <div class="row justify-content-center py-2">
             <a class="btn btn-primary btn-orange mr-1 btn-Add-To-Card" routerLink="/cart" (click)="addToCart()" id="cart-url">Add To Cart</a>
-            <a href="/Favorite/AddProduct_TO_Faviorate/@Model.Id" class="btn btn-orange mr-1 btn-Add-To-Card">Add to Faviorate</a>
+            <a (click)="AddTofaviorate(product.Id)" class="btn btn-orange mr-1 btn-Add-To-Card">Add to Faviorate</a>
         </div>
     </div>
     <!-- <hr />

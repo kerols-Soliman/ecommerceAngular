@@ -46,4 +46,7 @@ export class FaviorateProductsComponent implements OnInit {
     );
   
     }
+    ShowDetails(id){
+      this.router.navigate(['/productDetails',id])
+    }
 }

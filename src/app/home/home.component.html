@@ -1,17 +1,14 @@
-<<<<<<< HEAD
-=======
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
 
-<div *ngFor="let category of newCategory">
+<div *ngFor="let category of newCategory" style="margin-bottom: 7px;">
   <div class="title">
     <h1 class="d-inline">
       <span>{{category.Name}}</span>
     </h1>
     <button class="btn btn-orange " (click)="showMore(category.Id)">More ...</button>
   </div>
-
   <div class="row">
     <div class="col-12 col-md-3" *ngFor="let pro of category.Products">
       <div class="card">
@@ -20,12 +17,12 @@
         </div>
         <div class="card-body text-center">
           <h4 class="card-title">{{pro.Name}}</h4>
-          <p class="details">{{pro.Price}}</p>
-          <a class="btn btn-edit mr-2" (click)="addToCart(pro.Id)">Quick Shop</a>
+          <p class="details">{{pro.Price}} EGP</p>
+          <a class="btn btn-edit mr-2" (click)="ShowDetails(pro.Id)">Quick Shop</a>
+          <a class="btn btn-edit mr-2" (click)="EditProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Edit</a>
         </div>
       </div>
     </div>
   </div>
 
 </div>
->>>>>>> 6f24d7ab5fe087532c48c4b45c3c4ff7f683b28e

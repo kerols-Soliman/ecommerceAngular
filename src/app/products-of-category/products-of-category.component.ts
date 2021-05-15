@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-products-of-category',
@@ -14,7 +15,8 @@ export class ProductsOfCategoryComponent implements OnInit {
   categoryId:any;
   catName:string;
   products:any;
-  constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService) 
+  constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService,
+    private router:Router,private userService:UserService) 
       {
         this.activeRoute.params.subscribe(params=>
           {
@@ -49,6 +51,18 @@ export class ProductsOfCategoryComponent implements OnInit {
     "width": "100%",
     "color": "white",
     "margin-bottom": "7px"
+  }
+
+  EditProduct(id)
+  {
+    this.router.navigate(['EditProduct',id]);
+  }
+  checkAdmin(role):boolean
+  {
+    return this.userService.RoleMatch(role);
+  }
+  ShowDetails(id){
+    this.router.navigate(['/productDetails',id])
   }
 
 }

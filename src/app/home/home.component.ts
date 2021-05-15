@@ -7,6 +7,7 @@ import { ICategroy, ICategroyOfProduct } from '../interface/Categroy';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
 import { ProductService } from '../service/product.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
   flag: number = 1;
   prevCatID : number ;
 
-  constructor(private categroyService: CategroyService, private productService: ProductService , private router : Router) { }
+  constructor(private categroyService: CategroyService, private productService: ProductService 
+    , private router : Router,private userService:UserService) { }
 
 
 
@@ -53,12 +55,19 @@ export class HomeComponent implements OnInit {
       console.log(this.newCategory)
     })
   }
-  addToCart(id){
+  ShowDetails(id){
     this.router.navigate(['/productDetails',id])
   }
   showMore(id){
 
-  
+  }
 
+  EditProduct(id)
+  {
+    this.router.navigate(['EditProduct',id]);
+  }
+  checkAdmin(role):boolean
+  {
+    return this.userService.RoleMatch(role);
   }
 }

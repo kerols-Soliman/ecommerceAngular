@@ -9,6 +9,7 @@ export class DataSharingServiceService {
   constructor() { }
 
   IsCategoryEdited=new BehaviorSubject(false);
+  IsProductEdited=new BehaviorSubject(false);
 
   IsUserLogIn=new BehaviorSubject(false)
 }

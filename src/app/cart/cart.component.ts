@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from '../interface/Product';
 import { CartService } from '../service/cart.service';
+import { FaviorateService } from '../service/faviorate.service';
 import { OrderService } from '../service/order.service';
 
 @Component({
@@ -12,7 +13,8 @@ import { OrderService } from '../service/order.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:CartService,private route:Router,private orderService:OrderService) { }
+  constructor(private cartService:CartService,private route:Router,private orderService:OrderService,
+    private faviorateService:FaviorateService,private router:Router) { }
 
   products:IProduct[];
   totalPrice:number=0;
@@ -71,6 +73,17 @@ export class CartComponent implements OnInit {
     
     )
      
+  }
+  AddTofaviorate(id:number)
+  {
+    this.faviorateService.AddProductToFaviorates(id).subscribe(data=>
+      {
+        this.router.navigate(['FaviorateProducts']);
+      },(err:HttpErrorResponse)=>
+      {
+        console.log("error Req");
+      }
+    )
   }
 
 }
