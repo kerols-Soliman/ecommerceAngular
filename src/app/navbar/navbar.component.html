@@ -48,7 +48,6 @@
                         <a class="dropdown-item" routerLink="/createCategory" style="color: rgba(0,0,0,.5) !important"
                             *ngIf="checkAdmin(['Admin'])">Create Category</a>
                         <a class="dropdown-item" routerLink="/Category" style="color: rgba(0,0,0,.5) !important">Category</a>
-                        <a class="dropdown-item" routerLink="/MyOrders" style="color: rgba(0,0,0,.5) !important">MyOrders</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" routerLink="/createProduct" style="color: rgba(0,0,0,.5) !important"
                             *ngIf="checkAdmin(['Admin'])">Create Product</a>
@@ -77,6 +76,9 @@
                             <img [src]="photo" class="img-fluid img-icon mr-1" alt="">{{userName}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown ">
+                            
+                            
+                            <a class="dropdown-item" routerLink="/MyOrders" style="color: rgba(0,0,0,.5) !important">MyOrders</a>
                             <a class="dropdown-item" routerLink="/editProfile" style="color: rgba(0,0,0,.5) !important;">Profile</a>
 
                             <div class="dropdown-divider"></div>
