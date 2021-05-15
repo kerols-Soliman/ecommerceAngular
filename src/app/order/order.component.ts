@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit {
     this.orderService.GetOrders().subscribe((data)=>
     {
       this.orders=data;
+      this.orders=this.orders.reverse();
       console.log(data);
     },(err:HttpErrorResponse)=>
     {

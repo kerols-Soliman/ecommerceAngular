@@ -18,19 +18,18 @@ import { AuthGuard } from './Auth/auth.guard';
 
 const routes: Routes = [
   {path:"MyOrders",component:OrderComponent,canActivate:[AuthGuard]},
-  { path:'', redirectTo: '/home', pathMatch: 'full' },
+  { path:'', redirectTo: '/home', pathMatch: 'full'},
   { path:"home", component: HomeComponent },
-  {path:"MyOrders",component:OrderComponent},
   {path:"LogIn",component:LogInComponent},
-  {path:"Product/edit",component:EditProductComponent},
-  {path:"EditCategory/:id",component:EditCategoryComponent},
+  {path:"Product/edit",component:EditProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
+  {path:"EditCategory/:id",component:EditCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'productDetails/:id',component:ProductDetailsComponent},
   {path:'Category',component:ShowCategoryComponent},
   {path:'createCategory',component:CreateCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
-  {path:'createProduct',component:CreateProductComponent},
+  {path:'createProduct',component:CreateProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'regist',component:Regist2Component},
-  {path:'cart',component:CartComponent},
-  {path:'editProfile',component:ProfileEditComponent}
+  {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
+  {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

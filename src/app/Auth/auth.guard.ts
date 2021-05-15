@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
           let roles=route.data["roles"] as Array<string>;
           if(roles)
           {
+            console.log(roles);
             var match=this.userService.RoleMatch(roles);
             if(match) return true;
             else
@@ -24,6 +25,10 @@ export class AuthGuard implements CanActivate {
               this.router.navigate(['/login']);
               return false;
             }
+          }
+          else
+          {
+            return true;
           }
         }
      this.router.navigate(['/LogIn']);

@@ -33,8 +33,6 @@ export class NavbarComponent implements OnInit {
 
   checkAdmin(role):boolean
   {
-    console.log(role);
-    console.log(this.userService.RoleMatch(['Admin']));
     return this.userService.RoleMatch(role);
   }
 

@@ -25,13 +25,16 @@ export class UserService {
     var IsMatch=false;
     var userRoles:string[]=JSON.parse(localStorage.getItem('userRoles'));
  
-    allowRoles.forEach(element => {
-     if(userRoles.indexOf(element)>-1){
-       IsMatch=true;
-       return false;
-     } 
- 
-    });
+    if(userRoles !=null)
+    {
+      allowRoles.forEach(element => {
+        if(userRoles.indexOf(element)>-1){
+          IsMatch=true;
+        } 
+    
+       });
+    }
+   
  
     return IsMatch;
    }

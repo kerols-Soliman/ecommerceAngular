@@ -36,8 +36,6 @@ export class AccountService {
   }
 
   LoginUser(user:ILogUser){
-    console.log("in Log in");
-
     var data="username="+user.username+"&password="+user.password+"&grant_type=password"
     let reqHeader=new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'});
    return this.http.post(apiUrl+"login",data,{headers:reqHeader})
