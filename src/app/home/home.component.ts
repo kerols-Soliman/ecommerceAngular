@@ -32,96 +32,32 @@ export class HomeComponent implements OnInit {
     this.categroyService.getAllCategories().subscribe(
       (data) => {
         this.categroyies = data;
-        console.log(data);
+        this.load()
       },
       (err) => {
         this.catErr = err;
         console.log(err);
       }
     );
-
-    this.productService.getProducts().subscribe(
-      (data) => {
-        this.Products = data;
-        console.log(data);
-      },
-      (err) => {
-        this.proErr = err;
-        console.log(err);
-      }
-
-    )
   }
 
-  cardClass = {
-    "card": true,
-    "border": true,
-    "border-white": true,
-    "card-hover": true,
-    "ml-4": true,
-    "mb-2": true
+  newCategory=new Array()
+  load(){
+    this.categroyies.forEach(element => {
+      this.productInCategory(element.Id)
+    });
+  }
+  productInCategory(catID){
+    this.categroyService.GetById(catID).subscribe(data=>{
+      data.Products=data.Products.slice(0,4)
+      this.newCategory.push(data)
+      console.log(this.newCategory)
+    })
+  }
+  addToCart(id){
+    this.router.navigate(['/productDetails',id])
+  }
+  showMore(id){
 
   }
-
-
-  categroyHeaderStyle = {
-    "background-color": "#e32e00",
-    "width": "100%",
-    "color": "white",
-    "margin-bottom": "7px"
-  }
-
-
-
-  FilterProduct(cat: ICategroy, prod: IProduct) {
-    // console.log(cat.Id);
-    //console.log(prod.Category_Id)
-    // if (cat.Id == prod.Category_Id) {
-
-    //   if (this.flag <= 4) {
-    //     this.flag++;
-    //     console.log("true" + this.flag)
-    //     return true;
-
-    //   } else {
-    //     this.flag = 1;
-    //     console.log("false" + this.flag)
-    //     return false;
-    //   }
-
-    // } else {
-
-    //   return false;
-    // }
-   return cat.Id == prod.Category_Id ;
-    
-    
-
-  }
-  getProducts(cat){
-
-   this.categroyService.getAllCategoryProducts(cat.Id).subscribe(
-    
-    (data)=> {
-      console.log("method : " + data )
-      return data ;
-    } ,
-    (err)=>{
-
-      this.proErr = err;
-    } 
-   )
-
-  }
-  onProductClick(prodct : IProduct){
-    
-    this.router.navigate(["/productDetails" , prodct.Id])
-    console.log("pushed")
-  }
-
-  showProducts(cat : ICategroy){
-
-    this.router.navigate(['CategoryProducts',cat.Id , cat.Name]);
-  }
-
 }

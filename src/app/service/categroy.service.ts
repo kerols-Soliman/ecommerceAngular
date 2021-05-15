@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl } from 'src/config';
-import { ICategroy } from '../interface/Categroy';
+import { ICategroy, ICategroyOfProduct } from '../interface/Categroy';
 import { IProduct } from '../interface/Product';
 
 @Injectable({
@@ -20,6 +20,8 @@ export class CategroyService {
       (err)=>{return throwError(err.message || "Server Error")})
     )
   }
+
+  
   
   postCategory(categ:ICategroy){
     return this.http.post<ICategroy>(this.url,categ).pipe(catchError(
@@ -34,9 +36,11 @@ export class CategroyService {
     }))
     console.log("delete serve")
   }
+ 
+
   GetById(id: number) {
     
-    return this.http.get<ICategroy>( this.url + "/" + id).pipe(catchError(err => {
+    return this.http.get<ICategroyOfProduct>( this.url + "/" + id).pipe(catchError(err => {
       return throwError(err.message || "There is an error");
     }))
   }
@@ -56,4 +60,6 @@ export class CategroyService {
     )
   }
   url2:string = apiUrl+"api/ProductsCategory"
+
+  
 }

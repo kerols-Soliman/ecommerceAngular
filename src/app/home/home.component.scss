@@ -1,20 +1,40 @@
-.show-btn{
-    background-color: white ;
-    color: #e32e00 ;
+.data{
+    position: relative;
+    text-align: center;
+    padding: 10%;
 }
-
-.card-hover:hover{
-
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+.title{
+    background-color: #f25510;
+    color: white;
+    padding: .2% 1%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
-
-a:link { text-decoration: none; }
-
-
-a:visited { text-decoration: none; }
-
-
-a:hover { text-decoration: none; }
-
-
-a:active { text-decoration: none; }
+h4{
+    color: #f25510;
+}
+.details{
+    color: #5965b1;
+}
+.card{
+    border:1px solid #f3ca9c;
+    margin-top: 3%;
+}
+.card-img-top{
+    height: 15rem;
+    width: auto !important;
+}
+.card-body{
+    background-color: #f3ca9c !important;
+}
+.btn-edit{
+    background-color: #222e6a !important;
+    color: white !important;    
+    border: none !important;
+}
+.btn-edit:hover{
+    background-color: white !important;
+    color: #222e6a !important;
+    border: 1px solid #222e6a !important;
+}
