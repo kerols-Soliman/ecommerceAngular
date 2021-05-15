@@ -44,10 +44,8 @@ export class LogInComponent implements OnInit {
 
    this.acountService.LoginUser(this.user).subscribe((data)=>
     {
-      console.log(data);
       localStorage.setItem('userToken',data['access_token']);
       this.router.navigate(['/home']);
-      console.log("Done Req");
     },(err:HttpErrorResponse)=>
     {
       console.log("error Req");

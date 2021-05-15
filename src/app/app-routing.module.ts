@@ -14,6 +14,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path:'', redirectTo: '/home', pathMatch: 'full' },
@@ -28,7 +29,11 @@ const routes: Routes = [
   {path:'createProduct',component:CreateProductComponent},
   {path:'regist',component:Regist2Component},
   {path:'cart',component:CartComponent},
-  {path:'editProfile',component:ProfileEditComponent}
+  {path:'editProfile',component:ProfileEditComponent},
+  
+
+
+  {path:'**',component:NotFoundComponent}
 ];
 
 @NgModule({

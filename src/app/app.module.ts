@@ -26,6 +26,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -49,6 +50,7 @@ import { OrderComponent } from './order/order.component';
     CartComponent,
     ProfileEditComponent,
     OrderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
