@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { apiUrl } from 'src/config';
+import { ConfirmPasswordValidator } from '../ConfirmPasswordValidator';
 import { IUser } from '../interface/User';
 import { AccountService } from '../service/account.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FileUploadServiceService } from '../service/file-upload-service.service';
 
 @Component({
@@ -12,7 +14,8 @@ import { FileUploadServiceService } from '../service/file-upload-service.service
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor(private accountService:AccountService,private fb:FormBuilder,private fileService:FileUploadServiceService) { }
+  constructor(private accountService:AccountService,private fb:FormBuilder
+    ,private fileService:FileUploadServiceService,private sharedDataService:DataSharingServiceService) { }
 
   
   url=String(apiUrl)
@@ -37,16 +40,17 @@ export class ProfileEditComponent implements OnInit {
       this.newPhoto= this.user.Image.replace((this.url).toString(),"").replace(("Image/").toString(),"")
     });
   }
-  
+    
   
   registForm=this.fb.group({
     Name:['',[Validators.required,Validators.minLength(4)]],
-    Email:['',[Validators.required,Validators.pattern("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$")]],  
+    Email:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")]],  
     Password:['',[Validators.required,Validators.minLength(8)]],  
     confirmPassword:['',[Validators.required,Validators.minLength(8)]],          
     Gender:['',[Validators.required]],  
     Image:['']
-  })
+  },{validator:[ConfirmPasswordValidator]}as any)
+
 
   handleFileInput(file:FileList){
     this.FileToUpload=file.item(0);
@@ -71,6 +75,7 @@ export class ProfileEditComponent implements OnInit {
       this.updateUser.Image=this.FileToUpload.name;
     }
     this.accountService.Edit(this.updateUser).subscribe(d=>console.log(d))
+    this.sharedDataService.IsUserLogIn.next(true)
   }
 
 

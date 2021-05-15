@@ -6,16 +6,25 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-
 import { ShowCategoryComponent } from './show-category/show-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CartComponent } from './cart/cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { Regist2Component } from './regist/regist.component';
+import { ProductsOfCategoryComponent } from './products-of-category/products-of-category.component';
+
+
+
+
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { OrderComponent } from './order/order.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './Auth/auth.guard';
+<<<<<<< HEAD
 import { FaviorateProductsComponent } from './faviorate-products/faviorate-products.component';
+=======
+import { ProductSeachComponent } from './product-seach/product-seach.component';
+>>>>>>> bbe7459f1b848db522aaa479a51d7994a29fab33
 
 const routes: Routes = [
   {path:"FaviorateProducts",component:FaviorateProductsComponent,canActivate:[AuthGuard]},
@@ -30,8 +39,12 @@ const routes: Routes = [
   {path:'createCategory',component:CreateCategoryComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'createProduct',component:CreateProductComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'regist',component:Regist2Component},
+  {path:"CategoryProducts/:id/:CatName",component:ProductsOfCategoryComponent},
+
   {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
-  {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]}
+  {path:'editProfile',component:ProfileEditComponent,canActivate:[AuthGuard]},
+  {path:'search/:name',component:ProductSeachComponent},
+  {path:'**',component:NotFoundComponent}
 ];
 
 @NgModule({
