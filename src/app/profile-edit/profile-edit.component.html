@@ -1,78 +1,79 @@
 
+<div class="container pt-4">
+    <form [formGroup]="registForm">
+        <div class="row">
+            <div class="col-11 col-md-5 m-auto bord">
+                <h1 class="text-center mb-4">Edit Profile</h1>
+                <div class="form-group">
+                    <label for="user">User Name</label>
+                    <input type="text" class="form-control" id="user" 
+                        formControlName="Name">
+                    <div *ngIf="Name.invalid && Name.touched">
+                        <small class="text-danger" *ngIf="Name.errors?.required"> Name Is Required</small>
+                        <small class="text-danger" *ngIf="Name.errors?.minlength"> Name Length shoud be more than 4 character</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1"
+                        formControlName="Email">
+                    <div *ngIf="Email.invalid && Email.touched">
+                        <small class="text-danger" *ngIf="Email.errors?.required"> Email Is Required</small>
+                        <small class="text-danger" *ngIf="Email.errors?.pattern">example@example.com</small>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label for="Password1">Password</label>
+                    <input type="password" class="form-control" id="Password1" 
+                    formControlName="Password">
+                    <div *ngIf="Password.invalid && Password.touched">
+                        <small class="text-danger" *ngIf="Password.errors?.required"> Password Is Required</small>
+                        <small class="text-danger" *ngIf="Password.errors?.minlength"> Password Length shoud be more than 8 character</small>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label for="confirmPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword1"
+                        formControlName="confirmPassword">
+                    <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                        <small class="text-danger" *ngIf="confirmPassword.errors?.required"> confirmPassword Is Required</small>                    
+                    </div>
+                    <small *ngIf="registForm.errors?.misMatch&& confirmPassword.touched" class="text-danger">
+                        Not Match Password
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select class="form-control" id="Gender" formControlName="Gender" [(ngModel)]="gender[genderNumber]">
+                        <option style="display:none" disabled></option>   
+                        <option *ngFor="let g of gender">{{g}}</option>
+                    </select>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="" class="d-block">Image</label>
+                    <div class="text-center">
+                        <img [src]="photo" class="img-fluid imgeUpload" for="" (click)="imgFile.click()">
+                    </div>
+                    <small class="text-danger"> Image Is Required</small>
+                    <input type="file" class="form-control-file d-none" id="exampleFormControlFile1" 
+                        formControlName="Image" (change)="handleFileInput($event.target.files)" #imgFile accept="image/*">
 
-<form [formGroup]="registForm">
-    <div class="row">
-        <div class="col-11 col-md-5 m-auto bord">
-            <h1 class="text-center mb-4">Edit Profile</h1>
-            <div class="form-group">
-                <label for="user">User Name</label>
-                <input type="text" class="form-control" id="user" 
-                    formControlName="Name">
-                <div *ngIf="Name.invalid && Name.touched">
-                    <small class="text-danger" *ngIf="Name.errors?.required"> Name Is Required</small>
-                    <small class="text-danger" *ngIf="Name.errors?.minlength"> Name Length shoud be more than 4 character</small>
+                    <div *ngIf="Image.invalid && Image.touched" class="d-block">
+                        <small class="text-danger" *ngIf="Image.errors?.required"> Image Is Required</small>
+                    </div>
+                </div>
+                <div class="justify-content-center text-center">
+                    <button [disabled]="registForm.invalid"
+                        class="btn  btn-orange" (click)="update()" routerLink="/">Update</button>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1"
-                    formControlName="Email">
-                <div *ngIf="Email.invalid && Email.touched">
-                    <small class="text-danger" *ngIf="Email.errors?.required"> Email Is Required</small>
-                    <small class="text-danger" *ngIf="Email.errors?.pattern">example@example.com</small>
-                </div>
-            </div>
-        
-            <div class="form-group">
-                <label for="Password1">Password</label>
-                <input type="password" class="form-control" id="Password1" 
-                  formControlName="Password">
-                <div *ngIf="Password.invalid && Password.touched">
-                    <small class="text-danger" *ngIf="Password.errors?.required"> Password Is Required</small>
-                    <small class="text-danger" *ngIf="Password.errors?.minlength"> Password Length shoud be more than 8 character</small>
-                </div>
-            </div>
-        
-            <div class="form-group">
-                <label for="confirmPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword1"
-                    formControlName="confirmPassword">
-                <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
-                    <small class="text-danger" *ngIf="confirmPassword.errors?.required"> confirmPassword Is Required</small>                    
-                </div>
-                <small *ngIf="registForm.errors?.misMatch&& confirmPassword.touched" class="text-danger">
-                    Not Match Password
-                </small>
-            </div>
-            <div class="form-group">
-                <label for="Gender">Gender</label>
-                <select class="form-control" id="Gender" formControlName="Gender" [(ngModel)]="gender[genderNumber]">
-                    <option style="display:none" disabled></option>   
-                    <option *ngFor="let g of gender">{{g}}</option>
-                </select>
-            </div>
-            
-            
-            <div class="form-group">
-                <label for="" class="d-block">Image</label>
-                <div class="text-center">
-                    <img [src]="photo" class="img-fluid imgeUpload" for="" (click)="imgFile.click()">
-                </div>
-                <small class="text-danger"> Image Is Required</small>
-                <input type="file" class="form-control-file d-none" id="exampleFormControlFile1" 
-                    formControlName="Image" (change)="handleFileInput($event.target.files)" #imgFile accept="image/*">
 
-                <div *ngIf="Image.invalid && Image.touched" class="d-block">
-                    <small class="text-danger" *ngIf="Image.errors?.required"> Image Is Required</small>
-                </div>
-            </div>
-            <div class="justify-content-center text-center">
-                <button [disabled]="registForm.invalid"
-                    class="btn  btn-orange" (click)="update()" routerLink="/">Update</button>
-            </div>
-        </div>
-        
-
-    </div>                
-</form>
+        </div>                
+    </form>
+</div>

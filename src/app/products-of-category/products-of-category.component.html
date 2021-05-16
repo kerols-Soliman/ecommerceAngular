@@ -1,11 +1,19 @@
-<div class="container">
-    <div class="col-12">
-      <div  [style.margin-bottom]="'50px'">
-        <div class="ml-0 mr-0">
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<app-header></app-header>
+<app-search></app-search>
+
+<div class="container pt-4">
+  <div class="col-12">
+    <div  [style.margin-bottom]="'50px'">
+      <div class="ml-0 mr-0">
           <div [ngStyle]="categroyHeaderStyle">
             <div class="d-inline-block">
               <h3 [style.margin]="'5px'">{{catName}}</h3>
             </div>
+            <!-- <div class="d-inline-block float-right m-2"> <a href="#" class="btn-link text-white ">More</a> </div> -->
           </div>
   
           <!-- <div *ngFor="let prod of products">

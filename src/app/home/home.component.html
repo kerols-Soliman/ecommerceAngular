@@ -2,27 +2,32 @@
   <p style="color: white"> Loading... </p>
 </ngx-spinner>
 
-<div *ngFor="let category of newCategory" style="margin-bottom: 7px;">
-  <div class="title">
-    <h1 class="d-inline">
-      <span>{{category.Name}}</span>
-    </h1>
-    <button class="btn btn-orange " (click)="showMore(category.Id)">More ...</button>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-3" *ngFor="let pro of category.Products">
-      <div class="card">
-        <div class="data">
-          <img src={{pro.Image}} class="card-img-top img-fluid" alt="...">
-        </div>
-        <div class="card-body text-center">
-          <h4 class="card-title">{{pro.Name}}</h4>
-          <p class="details">{{pro.Price}} EGP</p>
-          <a class="btn btn-edit mr-2" (click)="ShowDetails(pro.Id)">Quick Shop</a>
-          <a class="btn btn-edit mr-2" (click)="EditProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Edit</a>
+<app-header></app-header>
+<app-search></app-search>
+<div class="container pt-4">
+  <div *ngFor="let category of newCategory">
+    <div class="title">
+      <h1 class="d-inline">
+        <span>{{category.Name}}</span>
+      </h1>
+      <button class="btn btn-orange " (click)="showMore(category)">More ...</button>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-3" *ngFor="let pro of category.Products">
+        <div class="card">
+          <div class="data">
+            <img src={{pro.Image}} class="card-img-top img-fluid" alt="...">
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">{{pro.Name}}</h4>
+            <p class="details">{{pro.Price}}</p>
+            <a class="btn btn-edit mr-2" (click)="ShowDetails(pro.Id)">Quick Shop</a>
+            <a class="btn btn-edit mr-2" (click)="EditProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Edit</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>

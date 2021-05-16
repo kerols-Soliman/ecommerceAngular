@@ -6,6 +6,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { FaviorateService } from '../service/faviorate.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,7 +17,7 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private productService:ProductService,private spinner:NgxSpinnerService
     ,private activateRoute:ActivatedRoute,private cartService:CartService,private router:Router
-    ,private faviorateService:FaviorateService) { }
+    ,private faviorateService:FaviorateService,private dataSharedService:DataSharingServiceService) { }
 
   product:IProduct;
   Id:number;
@@ -47,7 +48,9 @@ export class ProductDetailsComponent implements OnInit {
   }
   
   addToCart(){
-    this.cartService.post(this.product.Id,this.Quantity).subscribe(data=>console.log(data))
+    this.cartService.post(this.product.Id,this.Quantity).subscribe(data=>{
+      this.dataSharedService.IsCartChanged.next(true)
+    })
   }
   AddTofaviorate(id:number)
   {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
 import { UserService } from '../service/user.service';
@@ -16,23 +17,22 @@ export class ProductsOfCategoryComponent implements OnInit {
   catName:string;
   products:any;
   constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService,
-    private router:Router,private userService:UserService) 
+    private router:Router,private userService:UserService,private spinner:NgxSpinnerService) 
       {
         this.activeRoute.params.subscribe(params=>
           {
             this.categoryId=params['id']
             this.catName=params['CatName']
           }
-          
-
-          );
+        );
        }
 
   ngOnInit(): void {
+    this.spinner.show()
     this.categoryService.getAllCategoryProducts(this.categoryId).subscribe(data=>
       {
-        console.log(data);
         this.products=data;
+        this.spinner.hide();
       })
   }
   cardClass = {
