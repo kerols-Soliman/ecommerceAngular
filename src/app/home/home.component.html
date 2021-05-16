@@ -5,7 +5,7 @@
 <app-header></app-header>
 <app-search></app-search>
 <div class="container pt-4">
-  <div *ngFor="let category of newCategory">
+  <div *ngFor="let category of newCategory" class="mt-2">
     <div class="title mt-2">
       <h1 class="d-inline">
         <span>{{category.Name}}</span>
@@ -24,6 +24,9 @@
             <p class="details">{{pro.Price}}</p>
             <a class="btn btn-edit mr-2" (click)="ShowDetails(pro.Id)">Quick Shop</a>
             <a class="btn btn-edit mr-2" (click)="EditProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Edit</a>
+           <div class="mt-3">
+            <a class="btn btn-edit mr-2" (click)="DeleteProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Delete</a>
+           </div>
           </div>
         </div>
       </div>

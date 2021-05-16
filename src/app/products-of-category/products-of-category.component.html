@@ -26,6 +26,9 @@
                   <p class="details">{{pro.Price}} EGP</p>
                   <a class="btn btn-edit mr-2" (click)="ShowDetails(pro.Id)">Quick Shop</a>
                   <a class="btn btn-edit mr-2" (click)="EditProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Edit</a>
+                  <div class="mt-3">
+                    <a class="btn btn-edit mr-2" (click)="DeleteProduct(pro.Id)" *ngIf="checkAdmin(['Admin'])">Delete</a>
+                   </div>
                 </div>
               </div>
             </div>

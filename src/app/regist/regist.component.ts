@@ -29,7 +29,8 @@ export class Regist2Component implements OnInit {
     confirmPassword:['',[Validators.required,Validators.minLength(8)]],          
     Gender:['',[Validators.required]],  
     Image:['',[Validators.required]]
-  },{Validators:[ConfirmPasswordValidator]}as any)
+  },{Validator:[ConfirmPasswordValidator]}as any)
+  
 
   handleFileInput(file:FileList){
     this.FileToUpload=file.item(0);
