@@ -29,7 +29,7 @@ export class Regist2Component implements OnInit {
     confirmPassword:['',[Validators.required,Validators.minLength(8)]],          
     Gender:['',[Validators.required]],  
     Image:['',[Validators.required]]
-  },{Validator:[ConfirmPasswordValidator]}as any)
+  },{validator:[ConfirmPasswordValidator]}as any)
   
 
   handleFileInput(file:FileList){
