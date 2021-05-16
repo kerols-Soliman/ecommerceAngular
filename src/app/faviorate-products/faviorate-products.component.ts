@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from '../interface/Product';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
 import { FaviorateService } from '../service/faviorate.service';
 
 @Component({
@@ -13,9 +14,18 @@ export class FaviorateProductsComponent implements OnInit {
 
   products:IProduct[];
   isEmprty:boolean=false;
-  constructor(private faviorateService:FaviorateService,private router:Router) { }
+  constructor(private faviorateService:FaviorateService,private router:Router
+    ,private sharedDataService:DataSharingServiceService) { 
+      this.sharedDataService.IsFavorietChange.subscribe(data=>{
+        this.load()
+        this.isEmprty=false;
+      })
+    }
 
   ngOnInit(): void {
+    this.load()
+  }
+  load(){
     this.faviorateService.getAllFaviorateProducts().subscribe(data=>
       {
         console.log(data);
@@ -27,15 +37,13 @@ export class FaviorateProductsComponent implements OnInit {
         }
 
       })
-    
   }
   remove(id:number){
     this.faviorateService.deleteProductFromFaviorates(id).subscribe(data=>
       {
         console.log(data);
-       this.router.navigate(["/FaviorateProducts"]).then(() => {
-        window.location.reload()
-       });
+        this.router.navigate(["/FaviorateProducts"]);
+        this.load();
         console.log("Done Req");
       },
       (err:HttpErrorResponse)=>

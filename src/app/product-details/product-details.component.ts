@@ -57,6 +57,7 @@ export class ProductDetailsComponent implements OnInit {
     this.faviorateService.AddProductToFaviorates(id).subscribe(data=>
       {
         this.router.navigate(['FaviorateProducts']);
+        this.dataSharedService.IsFavorietChange.next(true)
       },(err:HttpErrorResponse)=>
       {
         console.log("error Req");

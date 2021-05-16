@@ -49,12 +49,16 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userRoles');
     this.IsLogged();
-    this.router.navigate(['/LogIn']);
+    this.router.navigate(['/']);
+    this.sharedDataService.IsUserLogIn.next(false)
   }
 
   checkAdmin(role):boolean
   {
     return this.userService.RoleMatch(role);
   }
-
+  showCategory(id,name){
+    this.router.navigate(['/CategoryProducts',id,name])
+    this.sharedDataService.IsCategoryNavChanged.next(true)
+  }
 }

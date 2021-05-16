@@ -1,17 +1,20 @@
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-loader" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 <div class="container pt-4">
-    <div class="title">
-        <h1>Categories</h1>
+    <div class="mb-4">
+        <app-search></app-search>
     </div>
+    
 
     <div class="row">
         <div class="col-12 col-md-4" *ngFor="let pro of AllProducts">
             <div class="card" >
                 <div class="data">
                     <img src={{pro.Image}} class="card-img-top img-fluid" alt="...">
-                    <h5 class="card-title">{{pro.Name}}</h5>
+                    
                 </div>
                 <div class="card-body text-center">
+                    <h5 class="card-title">{{pro.Name}}</h5>
+                    <p>{{pro.Price}}</p>
                 <a class="btn btn-edit mr-2" routerLink="/productDetails/{{pro.Id}}">Quick Shop</a>
                 </div>
             </div>

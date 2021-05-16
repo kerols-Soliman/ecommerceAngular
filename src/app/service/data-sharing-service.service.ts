@@ -18,4 +18,9 @@ export class DataSharingServiceService {
   IsCartChanged=new BehaviorSubject(false)
 
   IsOrderChanged=new BehaviorSubject(false);
+
+  IsFavorietChange=new BehaviorSubject(false);
+
+  IsCategoryNavChanged=new BehaviorSubject(false);
+
 }

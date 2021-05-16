@@ -5,35 +5,28 @@
                 <h3>Shop by category</h3>
                 <p class="pl-1" style="color: #6b6f81;">and find what you need</p>
                 <ul class="list-unstyled text-sm pt-1 pl-4">
-                    <li class="mb-2">
-                        <a class="text-muted text-hover-dark link-animated" href="#man's">Man's</a>
+                    
+                    <li class="mt-4">
+                        <a class="text-muted text-hover-dark link-animated" roterLink="/Category">Show All Categories</a>
                     </li>
-                    <li class="mb-2">
-                        <a class="text-muted text-hover-dark link-animated" href="#dress_product">Woman's</a>
-                    </li>
-                    <li class="mb-2">
-                        <a class="text-muted text-hover-dark link-animated" href="#">Kide's</a>
-                    </li>
+                    
                 </ul>
             </div>
             <div class="col-12 col-md-6">
                 <h3>Stay in avenue</h3>
                 <ul class="list-unstyled text-sm pt-1 row justify-content-center">
-                    <!-- @if (!User.Identity.IsAuthenticated){ -->
-                    <li class=" mr-1 p-2 nav-login col-8 col-md-3">
-                        <a class="nav-link border rounded text-center footer" href="/Account/Login">Login</a>
+                    <li class=" mr-1 p-2 nav-login col-8 col-md-3"  *ngIf="!IsLoggin">
+                        <a class="nav-link border rounded text-center footer"  routerLink="LogIn">Login</a>
                     </li>
-                    <li class="mr-1 p-2 nav-regist col-8 col-md-3">
-                        <a class="nav-link border rounded text-center footer" href="/Account/Register">Regist</a>
+                    <li class="mr-1 p-2 nav-regist col-8 col-md-3"  *ngIf="!IsLoggin">
+                        <a class="nav-link border rounded text-center footer" routerLink="/regist">Regist</a>
                     </li>
     
-                    <!-- } -->
-                    <!-- @if (User.Identity.IsAuthenticated){ -->
                     <li class="mr-1 p-2 nav-Sign-Out col-8 col-md-6">
-                        <a class="nav-link border rounded btn-sign-out text-center footer" href="~/Account/Logout">Sign
-                            Out</a>
+                        <a class="nav-link border rounded btn-sign-out text-center footer" *ngIf="IsLoggin" (click)="LogOut()">
+                            Sign Out
+                        </a>
                     </li>
-                    <!-- } -->
                 </ul>
             </div>
         </div>

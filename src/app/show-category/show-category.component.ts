@@ -19,9 +19,9 @@ export class ShowCategoryComponent implements OnInit {
     private dataSharingService:DataSharingServiceService) 
     {
       this.dataSharingService.IsCategoryEdited.subscribe(value=>{
-        if(value==true){
+        
           this.load();
-        }
+        
       })
      }
 
@@ -45,7 +45,7 @@ export class ShowCategoryComponent implements OnInit {
   remove(id:number){
     this.categoryService.DeleteCategory(id).subscribe(data=>{
       this.load()
-      
+      this.route.navigate(['/Category'])
     });
     
     // .then(() => {
