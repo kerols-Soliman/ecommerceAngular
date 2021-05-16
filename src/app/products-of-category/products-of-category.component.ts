@@ -1,9 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IProduct } from '../interface/Product';
 import { CategroyService } from '../service/categroy.service';
+import { DataSharingServiceService } from '../service/data-sharing-service.service';
+import { ProductService } from '../service/product.service';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -16,8 +19,12 @@ export class ProductsOfCategoryComponent implements OnInit {
   categoryId:any;
   catName:string;
   products:any;
+  proID: any;
+  CateID: number;
+  CategoryName: string;
   constructor(private activeRoute:ActivatedRoute,private categoryService:CategroyService,
-    private router:Router,private userService:UserService,private spinner:NgxSpinnerService) 
+    private router:Router,private userService:UserService,private spinner:NgxSpinnerService,
+    private productService:ProductService,private dataSharingService:DataSharingServiceService) 
       {
         this.activeRoute.params.subscribe(params=>
           {
@@ -63,6 +70,33 @@ export class ProductsOfCategoryComponent implements OnInit {
   }
   ShowDetails(id){
     this.router.navigate(['/productDetails',id])
+  }
+  DeleteProduct(productId)
+  {
+    this.proID=productId;
+    this.productService.GetById(this.proID).subscribe(Data=>
+      {
+        this.CateID=Data.Category_Id;
+        this.categoryService.GetById(this.CateID).subscribe(cat=>
+          {
+           this.CategoryName=cat.Name;
+          })
+        
+      });
+
+  this.productService.DeleteProduct(productId).subscribe(data=>
+    {
+      console.log(data);
+      this.router.navigate(['/CategoryProducts',this.CateID,this.CategoryName]);
+      console.log("Delet Done Req");
+    },
+    (err:HttpErrorResponse)=>
+    {
+      console.log("Delete error Req");
+    }
+   )
+    this.dataSharingService.IsProductEdited.next(true)
+   
   }
 
 }

@@ -11,6 +11,7 @@ import { OrderService } from '../service/order.service';
 export class OrderComponent implements OnInit {
 
   orders:any;
+  isEmprty:boolean=false;
   constructor(private orderService:OrderService,private dataSharedService:DataSharingServiceService) { 
     this.dataSharedService.IsOrderChanged.subscribe(data=>{
       this.load();
@@ -25,6 +26,10 @@ export class OrderComponent implements OnInit {
     {
       this.orders=data;
       this.orders=this.orders.reverse();
+      if(this.orders.length===0)
+      {
+        this.isEmprty=true;
+      }
     },(err:HttpErrorResponse)=>
     {
       console.log("error Req");

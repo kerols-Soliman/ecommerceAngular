@@ -53,4 +53,12 @@ export class ProductService {
     ))
   }
 
+  DeleteProduct(id: number) 
+  {
+    const newUrl = this.url + "/" + id;
+    return this.http.delete(newUrl).pipe(catchError(err => {
+      return throwError(err.message || "There is an error");
+    }))
+  }
+
 }
